@@ -1,25 +1,8 @@
 import { Link, NavLink } from "react-router-dom";
 import { FaPlay } from "react-icons/fa";
+import { headerLinks } from "../data/headerLists";
 
 const Header = () => {
-  const headerLinks = [
-    {
-      id: 1,
-      path: "/",
-      text: "Home",
-    },
-    {
-      id: 2,
-      path: "/movies",
-      text: "Movies",
-    },
-    {
-      id: 3,
-      path: "/series",
-      text: "TV Series",
-    },
-  ];
-
   return (
     <div className="fixed inset-0 z-50 h-fit py-12 px-24 flex flex-row items-center justify-between">
       <Link to="/">
