@@ -14,15 +14,9 @@ const Header = () => {
       <ul className="flex flex-row gap-6 text-white text-2xl font-semibold">
         {headerLinks.map((headerLink) => (
           <li key={headerLink.id}>
-            <NavLink
-              to={headerLink.path}
-              className={({ isActive }) =>
-                isActive
-                  ? "border-b-[3px] border-indigo-600"
-                  : "hover:border-b-[3px] hover:border-indigo-600"
-              }
-            >
+            <NavLink to={headerLink.path} className="relative group">
               {headerLink.text}
+              <div className="absolute -bottom-1.5 left-1/2 w-0 h-1 bg-indigo-600 -translate-x-1/2 transition-all duration-300 group-hover:w-full"></div>
             </NavLink>
           </li>
         ))}
