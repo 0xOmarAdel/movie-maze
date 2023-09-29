@@ -4,14 +4,17 @@ import { FaPlay } from "react-icons/fa";
 const Header = () => {
   const headerLinks = [
     {
+      id: 1,
       path: "/",
       text: "Home",
     },
     {
+      id: 2,
       path: "/movies",
       text: "Movies",
     },
     {
+      id: 3,
       path: "/series",
       text: "TV Series",
     },
@@ -26,8 +29,8 @@ const Header = () => {
         </div>
       </Link>
       <ul className="flex flex-row gap-6 text-white text-2xl font-semibold">
-        {headerLinks.map((headerLink, index) => (
-          <li key={index}>
+        {headerLinks.map((headerLink) => (
+          <li key={headerLink.id}>
             <NavLink
               to={headerLink.path}
               className={({ isActive }) =>
