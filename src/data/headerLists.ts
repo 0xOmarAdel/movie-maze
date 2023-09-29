@@ -1,4 +1,6 @@
-export const headerLinks = [
+import { ListType } from "../types/List.types";
+
+export const headerLinks: ListType = [
   {
     id: 1,
     path: "/",

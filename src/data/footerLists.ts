@@ -1,10 +1,6 @@
-type List = {
-  id: number;
-  text: string;
-  path: string;
-}[];
+import { ListType } from "../types/List.types";
 
-export const mainList: List = [
+export const mainList: ListType = [
   {
     id: 1,
     text: "Home",
@@ -27,7 +23,7 @@ export const mainList: List = [
   },
 ];
 
-export const movieList: List = [
+export const movieList: ListType = [
   {
     id: 1,
     text: "Upcoming",
@@ -55,7 +51,7 @@ export const movieList: List = [
   },
 ];
 
-export const seriesList: List = [
+export const seriesList: ListType = [
   {
     id: 1,
     text: "Airing Today",
