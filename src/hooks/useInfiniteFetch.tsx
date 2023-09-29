@@ -73,7 +73,7 @@ const useInfiniteFetch = <T,>(
               : [...prevData, ...response.data.results];
             return getUniqueData(allData);
           } else {
-            setData(response.data.results);
+            return response.data.results;
           }
         });
       } catch (error) {
