@@ -1,0 +1,23 @@
+.modal {
+  @apply fixed top-1/2 left-1/2 z-10;
+  @apply -translate-x-1/2 -translate-y-full;
+  @apply w-fit p-12 overflow-hidden;
+  @apply bg-[#0f0f0f] rounded;
+  @apply transition-all duration-700;
+}
+
+.modal.modal-visible {
+  @apply opacity-100 -translate-y-1/2;
+}
+
+.modal.modal-hidden {
+  @apply opacity-0;
+}
+
+.modal .modal-close-icon {
+  @apply absolute top-3 right-3;
+  @apply text-3xl text-gray-400;
+  @apply cursor-pointer;
+  @apply transition duration-500;
+  @apply hover:text-indigo-600 hover:scale-110;
+}
