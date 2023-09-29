@@ -9,3 +9,7 @@
 body {
   @apply bg-[#0f0f0f];
 }
+
+.movie-list-swiper .swiper-slide {
+  @apply w-fit;
+}
