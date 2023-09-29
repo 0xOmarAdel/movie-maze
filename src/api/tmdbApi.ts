@@ -4,14 +4,14 @@ import { TVSeriesTypes } from "../types/TVSeries.types";
 import { CategoriesTypes } from "../types/Categories.types";
 
 const tmdbApi = {
-  getMoviesList: (type: movieListsTypes) => {
+  getMoviesList: (type: movieListsTypes, params: object) => {
     const url = "movie/" + type;
-    return axiosClient.get(url, { params: {} });
+    return axiosClient.get(url, params);
   },
 
-  getTvList: (type: TVSeriesTypes) => {
+  getTvList: (type: TVSeriesTypes, params: object) => {
     const url = "tv/" + type;
-    return axiosClient.get(url, { params: {} });
+    return axiosClient.get(url, params);
   },
 
   getVideos: (category: CategoriesTypes, id: string) => {
@@ -33,7 +33,7 @@ const tmdbApi = {
     const url = category + "/" + id + "/credits";
     return axiosClient.get(url, { params: {} });
   },
-  
+
   similar: (category: CategoriesTypes, id: string) => {
     const url = category + "/" + id + "/similar";
     return axiosClient.get(url, { params: {} });
