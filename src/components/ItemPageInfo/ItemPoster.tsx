@@ -10,7 +10,7 @@ const ItemPoster: React.FC<Props> = ({ image }) => {
     <img
       src={image ? `${apiConfig.originalImage(image)}` : imagePlaceHolder}
       alt=""
-      className="h-[480px] w-[300px] bg-contain bg-no-repeat rounded-3xl"
+      className="h-[480px] w-[300px] hidden lg:block bg-contain bg-no-repeat rounded-3xl"
     />
   );
 };
