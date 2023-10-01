@@ -19,7 +19,7 @@ const ItemRating: React.FC<Props> = ({ rating }) => {
         styles={buildStyles({
           pathTransitionDuration: 0.5,
           pathColor: `#6366f1`,
-          trailColor: "#d6d6d6",
+          trailColor: "#0f0f0f70",
         })}
         value={rating * 10}
       >
