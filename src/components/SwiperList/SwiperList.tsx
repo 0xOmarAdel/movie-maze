@@ -6,11 +6,13 @@ const SwiperList = ({ title, link, category, type, id }) => {
     <div className="flex flex-col gap-5">
       <div className="flex flex-row items-center justify-between">
         <h2 className="text-2xl text-white font-medium">{title}</h2>
-        <Link to={link}>
-          <button className="text-gray-300 font-medium rounded-3xl transition duration-500 hover:text-indigo-500">
-            View more
-          </button>
-        </Link>
+        {link && (
+          <Link to={link}>
+            <button className="text-gray-300 font-medium rounded-3xl transition duration-500 hover:text-indigo-500">
+              View more
+            </button>
+          </Link>
+        )}
       </div>
       <SwiperListItems category={category} type={type} id={id} />
     </div>
