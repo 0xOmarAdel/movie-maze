@@ -8,5 +8,5 @@ export const dateFormatter = (inputString: string) => {
     day: "numeric",
   };
   const output = inputDate.toLocaleDateString("en-US", options);
-  return output;
+  return inputString === "" ? "Unknown" : output;
 };

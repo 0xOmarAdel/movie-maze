@@ -3,5 +3,5 @@ export const timeFormatter = (inputMinutes: number) => {
   const minutes = inputMinutes % 60;
   const output = `${hours}h ${minutes}m`;
 
-  return output;
+  return inputMinutes === 0 ? "Unknown" : output;
 };
