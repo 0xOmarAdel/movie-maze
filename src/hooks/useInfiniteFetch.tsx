@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useCallback, useRef } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 
@@ -37,18 +37,14 @@ const useInfiniteFetch = <T,>(
   );
 
   const fetchData = useCallback(
-    async (reFetch?: boolean) => {
+    async (p?: number) => {
       try {
-        let firstPage = 0;
-        if (reFetch) {
-          setInitialLoading(true);
-          setReFetchLoading(false);
-          setHasMore(true);
-          setData([]);
-          firstPage = 1;
-        }
+        const pageToUse = p || page;
 
-        if (page > 1) {
+        setInitialLoading(pageToUse === 1);
+        setReFetchLoading(pageToUse > 1);
+
+        if (pageToUse > 1) {
           setReFetchLoading(true);
         }
 
@@ -57,17 +53,15 @@ const useInfiniteFetch = <T,>(
           total_results: number;
         }> = await axios({
           method: "get",
-          url: `${url}?page=${firstPage || page}`,
+          url: `${url}?page=${pageToUse}`,
           params: paramsRef.current || {},
         });
 
-        console.log(response.data);
-
-        setHasMore(page < response.data.total_results / (page - 1));
+        setHasMore(pageToUse < response.data.total_results / (pageToUse - 1));
         setTotal(response.data.total_results);
 
         setData((prevData) => {
-          if (prevData) {
+          if (prevData && pageToUse > 1) {
             const allData: T[] = reverse
               ? [...response.data.results, ...prevData]
               : [...prevData, ...response.data.results];
@@ -86,22 +80,24 @@ const useInfiniteFetch = <T,>(
         setReFetchLoading(false);
       }
     },
-    [url, page, reverse, getUniqueData, displayToast]
+    [url, reverse, getUniqueData, displayToast]
   );
 
-  useEffect(() => {
-    fetchData();
-  }, [fetchData]);
-
   const reFetch = useCallback(() => {
-    fetchData(true);
+    setPage((prevState) => {
+      fetchData(1);
+      return 1;
+    });
   }, [fetchData]);
 
   const fetchMoreData = useCallback(() => {
     if (hasMore) {
-      setPage((prevPage) => prevPage + 1);
+      setPage((prevState) => {
+        fetchData(prevState + 1);
+        return prevState + 1;
+      });
     }
-  }, [hasMore]);
+  }, [hasMore, fetchData]);
 
   return {
     data,
