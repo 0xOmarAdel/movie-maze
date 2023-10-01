@@ -34,7 +34,9 @@ const CastList = () => {
               className="w-full h-32 bg-contain bg-no-repeat"
             />
 
-            <p className="  text-sm text-gray-300">{item.name}</p>
+            <p className="text-sm text-gray-300 break-words hyphens-auto">
+              {item.name}
+            </p>
           </div>
         ))}
       </div>
