@@ -21,7 +21,7 @@ const ItemRating: React.FC<Props> = ({ rating }) => {
           pathColor: `#6366f1`,
           trailColor: "#d6d6d6",
         })}
-        value={50}
+        value={rating * 10}
       >
         <p className="text-xl text-white font-medium">{output}</p>
       </CircularProgressbarWithChildren>
