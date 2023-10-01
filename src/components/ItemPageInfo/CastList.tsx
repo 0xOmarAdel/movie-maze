@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
-
 import { useParams } from "react-router";
-
 import tmdbApi from "../../api/tmdbApi";
 import apiConfig from "../../api/apiConfig";
 import { CategoriesTypes } from "../../types/Categories.types.ts";
@@ -21,11 +19,10 @@ const CastList = () => {
     getCredits();
   }, [category, id]);
 
-  console.log(casts);
   return (
     <div className="flex flex-col gap-3">
       <h2 className="text-3xl text-white">Cast</h2>
-      <div className="flex flex-row gap-3">
+      <div className="flex flex-row flex-wrap gap-3">
         {casts.map((item, i) => (
           <div key={i} className="w-20 flex flex-col gap-2">
             <img
