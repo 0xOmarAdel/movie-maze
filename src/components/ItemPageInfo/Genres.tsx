@@ -11,7 +11,7 @@ const Genres: React.FC<Props> = ({ genres }) => {
       {genres?.slice(0, 5).map((genre) => (
         <span
           key={genre.id}
-          className="px-4 py-1 text-gray-200 border border-gray-200 rounded-3xl"
+          className="px-4 py-1 text-gray-200 text-sm  bg-indigo-600 rounded-3xl"
         >
           {genre.name}
         </span>
