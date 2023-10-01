@@ -9,9 +9,11 @@ type Props = {
 
 const ItemRating: React.FC<Props> = ({ rating }) => {
   const firstNumberAfterDot = Math.floor(rating * 10) % 10;
-  const output = firstNumberAfterDot
-    ? parseFloat(rating.toFixed(1))
-    : parseFloat(rating.toFixed(1)) + ".0";
+  const truncatedRating = Math.floor(rating * 10) / 10;
+  const output =
+    firstNumberAfterDot >= 0
+      ? truncatedRating.toFixed(1)
+      : truncatedRating.toFixed(1) + ".0";
 
   return (
     <div className="w-16 h-16">
