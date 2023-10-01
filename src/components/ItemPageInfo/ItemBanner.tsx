@@ -7,7 +7,7 @@ type Props = {
 const ItemBanner: React.FC<Props> = ({ image }) => {
   return (
     <div
-      className="relative h-[50vh] bg-cover"
+      className="relative h-[65vh] bg-cover bg-center"
       style={{
         backgroundImage: image ? `url(${apiConfig.originalImage(image)})` : "",
       }}
