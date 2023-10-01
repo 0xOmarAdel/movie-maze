@@ -4,7 +4,7 @@ import { headerLinks } from "../data/headerLists";
 
 const Header = () => {
   return (
-    <div className="fixed inset-0 z-50 h-fit py-12 px-24 flex flex-row items-center justify-between">
+    <div className="container fixed inset-0 z-50 h-fit flex flex-row items-center justify-between">
       <Link to="/">
         <div className="flex flex-row items-center gap-3 text-white text-4xl font-medium">
           <FaPlay className="text-indigo-500 scale-105" />
