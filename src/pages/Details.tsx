@@ -6,6 +6,13 @@ import apiConfig from "../api/apiConfig.ts";
 import CastList from "../components/ItemPageInfo/CastList.tsx";
 import Trailer from "../components/ItemPageInfo/Trailer.tsx";
 import { CategoriesTypes } from "../types/Categories.types.ts";
+import {
+  CircularProgressbar,
+  CircularProgressbarWithChildren,
+  buildStyles,
+} from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
+import ItemRating from "../components/ItemPageInfo/ItemRating.tsx";
 
 const Details = () => {
   const { category, id } = useParams<{
@@ -46,7 +53,7 @@ const Details = () => {
             ></div>
           </div>
           <div className="py-16 px-24 flex flex-col gap-10">
-            <div className="relative z-50 -mt-60 flex flex-row justify-center gap-10">
+            <div className="z-50 -mt-60 flex flex-row justify-center gap-10">
               <div
                 className="h-[480px] w-[300px] bg-cover bg-center rounded-3xl"
                 style={{
@@ -57,9 +64,12 @@ const Details = () => {
               ></div>
               <div className="max-w-4xl flex flex-col gap-8">
                 <div className="flex flex-col gap-5">
-                  <h1 className="text-5xl text-white font-medium">
-                    {item.title || item.name}
-                  </h1>
+                  <div className="flex flex-row items-center gap-3">
+                    <ItemRating rating={item.vote_average} />
+                    <h1 className="text-5xl text-white font-medium">
+                      {item.title || item.name}
+                    </h1>
+                  </div>
                   <div className="flex flex-row gap-2">
                     {item.genres?.slice(0, 5).map((genre, i) => (
                       <span
@@ -70,7 +80,10 @@ const Details = () => {
                       </span>
                     ))}
                   </div>
-                  <p className="text-lg text-gray-300">{item.overview}</p>
+                  <div className="flex flex-col gap-3">
+                    <h2 className="text-3xl text-white">Overview</h2>
+                    <p className="text-lg text-gray-300">{item.overview}</p>
+                  </div>
                 </div>
                 <CastList id={item.id} />
               </div>
@@ -78,10 +91,13 @@ const Details = () => {
             <Trailer id={item.id} />
             <div className="flex flex-col gap-5">
               <SwiperList
-                title="Similar"
+                title={`Similar ${
+                  category === "movie" ? "Movies" : "TV Shows"
+                }`}
                 category={category}
                 type="similar"
                 id={item.id}
+                link={false}
               />
             </div>
           </div>
