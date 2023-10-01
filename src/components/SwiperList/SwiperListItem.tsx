@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import apiConfig from "../../api/apiConfig.js";
 
 const SwiperListItem = ({ item, category }) => {
-  const link = "/" + category[category] + "/" + item.id;
+  const link = "/" + category + "/" + item.id;
 
   const bg = apiConfig.w500Image(item.poster_path || item.backdrop_path);
 
