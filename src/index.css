@@ -14,6 +14,6 @@ body {
   @apply w-fit;
 }
 
-.container {
-  @apply mx-auto px-4 sm:px-8 md:px-8 xl:px-16 py-16;
+.page-container {
+  @apply px-4 sm:px-8 md:px-8 xl:px-16 py-16;
 }
