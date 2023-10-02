@@ -21,7 +21,9 @@ const SwiperListItem = ({ item, category }) => {
         </div>
         <div className="absolute inset-0 z-30 w-full h-full bg-black bg-opacity-70 opacity-0 transition duration-300 group-hover:opacity-100"></div>
       </div>
-      <h3 className="text-white text-center">{item.title || item.name}</h3>
+      <h3 className="text-white text-center" onClick={() => navigate(link)}>
+        {item.title || item.name}
+      </h3>
     </div>
   );
 };
