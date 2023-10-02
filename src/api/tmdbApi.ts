@@ -1,6 +1,6 @@
 import axiosClient from "./axiosClient";
 import { movieListsTypes } from "../types/MovieLists.types";
-import { TVSeriesTypes } from "../types/TVSeries.types";
+import { TVSeriesListsTypes } from "../types/TVSeriesLists.types";
 import { CategoriesTypes } from "../types/Categories.types";
 
 const tmdbApi = {
@@ -9,7 +9,7 @@ const tmdbApi = {
     return axiosClient.get(url, params);
   },
 
-  getTvList: (type: TVSeriesTypes, params: object) => {
+  getTvList: (type: TVSeriesListsTypes, params: object) => {
     const url = "tv/" + type;
     return axiosClient.get(url, params);
   },
@@ -22,6 +22,11 @@ const tmdbApi = {
   detail: (category: CategoriesTypes, id: string, params: object) => {
     const url = category + "/" + id;
     return axiosClient.get(url, params);
+  },
+
+  credits: (category: CategoriesTypes, id: string) => {
+    const url = category + "/" + id + "/credits";
+    return axiosClient.get(url, { params: {} });
   },
 
   similar: (category: CategoriesTypes, id: string) => {
