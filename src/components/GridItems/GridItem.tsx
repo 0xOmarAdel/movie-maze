@@ -19,7 +19,7 @@ const GridItem: React.FC<Props> = ({ item, category }) => {
         className="relative cursor-pointer group"
         onClick={() => navigate(link)}
       >
-        <img src={bg} alt="" className="w-ful aspect-[1/1.5]" />
+        <img src={bg} alt="" className="aspect-[1/1.5]" />
         <div className="absolute bottom-0 z-40 text-white flex flex-col gap-2 px-4 py-3 opacity-0 scale-75 transition duration-300 delay-100 group-hover:opacity-100 group-hover:scale-100">
           <ItemRating rating={item.vote_average} small={true} />
         </div>
