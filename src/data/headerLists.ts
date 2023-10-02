@@ -13,7 +13,7 @@ export const headerLinks: ListType = [
   },
   {
     id: 3,
-    path: "/tv/trending",
+    path: "/tv-series/trending",
     text: "TV Series",
   },
 ];
