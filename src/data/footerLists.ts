@@ -55,26 +55,26 @@ export const seriesList: ListType = [
   {
     id: 1,
     text: "Airing Today",
-    path: "/tv-series/airing-today",
+    path: "/tv/airing-today",
   },
   {
     id: 2,
     text: "On the Air",
-    path: "/tv-series/on-the-air",
+    path: "/tv/on-the-air",
   },
   {
     id: 3,
     text: "Popular",
-    path: "/tv-series/popular",
+    path: "/tv/popular",
   },
   {
     id: 4,
     text: "Top Rated",
-    path: "/tv-series/top-rated",
+    path: "/tv/top-rated",
   },
   {
     id: 5,
     text: "Trending",
-    path: "/tv-series/trending",
+    path: "/tv/trending",
   },
 ];
