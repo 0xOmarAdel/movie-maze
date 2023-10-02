@@ -8,12 +8,12 @@ export const headerLinks: ListType = [
   },
   {
     id: 2,
-    path: "/movies",
+    path: "/movies/trending",
     text: "Movies",
   },
   {
     id: 3,
-    path: "/series",
+    path: "/tv/trending",
     text: "TV Series",
   },
 ];
