@@ -19,19 +19,9 @@ const tmdbApi = {
     return axiosClient.get(url, { params: {} });
   },
 
-  search: (category: CategoriesTypes, params: object) => {
-    const url = "search/" + category;
-    return axiosClient.get(url, params);
-  },
-
   detail: (category: CategoriesTypes, id: string, params: object) => {
     const url = category + "/" + id;
     return axiosClient.get(url, params);
-  },
-
-  credits: (category: CategoriesTypes, id: string) => {
-    const url = category + "/" + id + "/credits";
-    return axiosClient.get(url, { params: {} });
   },
 
   similar: (category: CategoriesTypes, id: string) => {
