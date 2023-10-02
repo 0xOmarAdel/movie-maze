@@ -12,7 +12,9 @@ export default {
       fontFamily: {
         sans: ["Roboto", "sans-serif"],
       },
-      colors: {},
+      gridTemplateColumns: {
+        itemsGrid: "repeat(auto-fill, minmax(200px, 1fr))",
+      },
     },
   },
   plugins: [],

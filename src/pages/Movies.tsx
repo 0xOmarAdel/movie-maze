@@ -7,6 +7,8 @@ import apiConfig from "../api/apiConfig";
 import { movieList } from "../data/footerLists";
 import SearchBar from "../ui/SearchBar.tsx";
 import ItemBanner from "../components/ItemPageInfo/ItemBanner.tsx";
+import { MovieType } from "../types/Movie.types.js";
+import { TVSeriesType } from "../types/TVSeries.types.js";
 
 const Movies = () => {
   const { type } = useParams();
@@ -34,7 +36,7 @@ const Movies = () => {
     hasMore: feedPostsHasMore,
     reFetch,
     fetchMoreData,
-  } = useInfiniteFetch<[]>(
+  } = useInfiniteFetch<MovieType & TVSeriesType>(
     query
       ? "https://api.themoviedb.org/3/search/movie"
       : `https://api.themoviedb.org/3/${
@@ -109,7 +111,7 @@ const Movies = () => {
             hasMore={feedPostsHasMore}
             loader={<p>ss</p>}
           >
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:flex xl:flex-row xl:flex-wrap gap-8">
+            <div className="grid grid-cols-itemsGrid gap-8">
               {profilePosts?.map((item) => (
                 <GridItem key={item.id} item={item} category="movie" />
               ))}
