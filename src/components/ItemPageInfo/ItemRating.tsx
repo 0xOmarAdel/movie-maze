@@ -5,9 +5,10 @@ import {
 
 type Props = {
   rating: number;
+  className?: string;
 };
 
-const ItemRating: React.FC<Props> = ({ rating }) => {
+const ItemRating: React.FC<Props> = ({ rating, className }) => {
   const firstNumberAfterDot = Math.floor(rating * 10) % 10;
   const truncatedRating = Math.floor(rating * 10) / 10;
   const output =
@@ -16,7 +17,7 @@ const ItemRating: React.FC<Props> = ({ rating }) => {
       : truncatedRating.toFixed(1) + ".0";
 
   return (
-    <div className="w-16 h-16">
+    <div className={`w-16 h-16 ${className ? className : ""}`}>
       <CircularProgressbarWithChildren
         styles={buildStyles({
           pathTransitionDuration: 0.5,
