@@ -24,7 +24,7 @@ const HeroSliderItem = ({ item, isActive, pauseSwiper, resumeSwiper }) => {
         src={apiConfig.originalImage(item.backdrop_path)}
         className="h-screen w-full select-none"
       />
-      <div className="absolute top-1/2 z-40 px-24 flex flex-row items-center gap-16 -translate-y-1/2">
+      <div className="page-container absolute top-1/2 z-40 flex flex-row items-center gap-16 -translate-y-1/2">
         <div className="flex flex-col gap-8">
           <h2
             className={`text-5xl text-white font-medium opacity-0 -translate-y-full transition duration-700 ${
@@ -41,7 +41,7 @@ const HeroSliderItem = ({ item, isActive, pauseSwiper, resumeSwiper }) => {
             {item.overview}
           </div>
           <div
-            className={`flex flex-row gap-5 opacity-0 -translate-y-1/2 transition duration-700 delay-[600ms] ${
+            className={`flex flex-row gap-3 opacity-0 -translate-y-1/2 transition duration-700 delay-[600ms] ${
               isActive && "!opacity-100 !translate-y-0"
             }`}
           >
@@ -49,7 +49,7 @@ const HeroSliderItem = ({ item, isActive, pauseSwiper, resumeSwiper }) => {
               className="px-8 py-1.5 bg-indigo-700 text-lg text-white font-medium rounded-3xl"
               onClick={() => navigate("/movie/" + item.id)}
             >
-              Watch now
+              More info
             </button>
             <button
               className="px-8 py-1.5 border-2 border-white text-lg text-white font-medium rounded-3xl"

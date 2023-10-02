@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Modal from "../ui/Modal.jsx";
-import tmdbApi, { category } from "../api/tmdbApi.js";
+import tmdbApi from "../api/tmdbApi.js";
 
 const HeroSliderTrailerModal = ({
   movieId,
@@ -11,7 +11,7 @@ const HeroSliderTrailerModal = ({
 
   useEffect(() => {
     const xx = async () => {
-      const videos = await tmdbApi.getVideos(category.movie, movieId);
+      const videos = await tmdbApi.getVideos("movie", movieId);
       if (videos.results.length > 0) {
         setVideoSrc("https://www.youtube.com/embed/" + videos.results[0].key);
       }

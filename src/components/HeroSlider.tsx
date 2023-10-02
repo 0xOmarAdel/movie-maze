@@ -3,7 +3,7 @@ import { Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/autoplay";
-import tmdbApi, { movieType } from "../api/tmdbApi.js";
+import tmdbApi from "../api/tmdbApi.ts";
 import HeroSliderItem from "./HeroSliderItem.js";
 
 const HeroSlider = () => {
@@ -14,11 +14,10 @@ const HeroSlider = () => {
     const getMovies = async () => {
       const params = { page: 1 };
       try {
-        const response = await tmdbApi.getMoviesList(movieType.popular, {
+        const response = await tmdbApi.getMoviesList("popular", {
           params,
         });
         setMovies(response.results.slice(0, 5));
-        console.log(response);
       } catch {
         console.log("error");
       }
