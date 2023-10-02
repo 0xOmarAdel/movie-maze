@@ -12,8 +12,8 @@ const Footer = () => {
       className="page-container relative"
       style={{ backgroundImage: `url(${footerBg})` }}
     >
-      <div className="relative z-50 grid lg:grid-cols-3 justify-center lg:justify-start gap-8">
-        <div className="w-fit flex flex-col gap-6">
+      <div className="relative z-50 grid grid-cols-1 lg:grid-cols-3 justify-center lg:justify-start gap-y-8 lg:gap-y-0 lg:gap-x-8">
+        <div className="flex flex-col items-center lg:items-start gap-6">
           <Link to="/">
             <div className="flex flex-row items-center gap-3 text-white text-4xl font-medium">
               <FaPlay className="text-indigo-500 scale-105" />
