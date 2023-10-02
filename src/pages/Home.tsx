@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <>
       <HeroSlider />
-      <div className="py-16 px-24 flex flex-col gap-5">
+      <div className="page-container flex flex-col gap-5">
         <SwiperList
           title="Upcoming Movies"
           link="/movies/upcoming"
