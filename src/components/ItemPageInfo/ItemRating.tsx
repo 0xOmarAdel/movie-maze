@@ -17,7 +17,13 @@ const ItemRating: React.FC<Props> = ({ rating, small }) => {
       : truncatedRating.toFixed(1) + ".0";
 
   return (
-    <div className={small ? "w-12 h-12" : "w-16 h-16"}>
+    <div
+      className={
+        small
+          ? "min-w-[3rem] max-w-[3rem] min-h-[3rem] max-h-[3rem]"
+          : "min-w-[3.4rem] max-w-[3.4rem] min-h-[3.4rem] max-h-[3.4rem]"
+      }
+    >
       <CircularProgressbarWithChildren
         styles={buildStyles({
           pathTransitionDuration: 0.5,
