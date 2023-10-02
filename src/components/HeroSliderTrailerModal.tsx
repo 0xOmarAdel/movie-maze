@@ -16,13 +16,14 @@ const HeroSliderTrailerModal: React.FC<Props> = ({
   const [videoSrc, setVideoSrc] = useState("");
 
   useEffect(() => {
-    const xx = async () => {
+    const fetchVideos = async () => {
       const videos = await tmdbApi.getVideos("movie", movieId);
       if (videos.results.length > 0) {
         setVideoSrc("https://www.youtube.com/embed/" + videos.results[0].key);
       }
     };
-    xx();
+
+    fetchVideos();
   }, [movieId]);
 
   const closeModal = () => {
