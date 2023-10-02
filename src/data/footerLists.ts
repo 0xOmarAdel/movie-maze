@@ -26,55 +26,55 @@ export const mainList: ListType = [
 export const movieList: ListType = [
   {
     id: 1,
-    text: "Upcoming",
-    path: "/movies/upcoming",
-  },
-  {
-    id: 2,
-    text: "Now Playing",
-    path: "/movies/now-playing",
-  },
-  {
-    id: 3,
     text: "Popular",
     path: "/movies/popular",
   },
   {
-    id: 4,
+    id: 2,
+    text: "Trending",
+    path: "/movies/trending",
+  },
+  {
+    id: 3,
     text: "Top Rated",
     path: "/movies/top-rated",
   },
   {
+    id: 4,
+    text: "Now Playing",
+    path: "/movies/now-playing",
+  },
+  {
     id: 5,
-    text: "Trending",
-    path: "/movies/trending",
+    text: "Upcoming",
+    path: "/movies/upcoming",
   },
 ];
 
 export const seriesList: ListType = [
   {
     id: 1,
-    text: "Airing Today",
-    path: "/tv-series/airing-today",
-  },
-  {
-    id: 2,
-    text: "On the Air",
-    path: "/tv-series/on-the-air",
-  },
-  {
-    id: 3,
     text: "Popular",
     path: "/tv-series/popular",
   },
   {
-    id: 4,
+    id: 2,
+    text: "Trending",
+    path: "/tv-series/trending",
+  },
+  {
+    id: 3,
     text: "Top Rated",
     path: "/tv-series/top-rated",
   },
   {
+    id: 4,
+    text: "On the Air",
+    path: "/tv-series/on-the-air",
+  },
+  {
     id: 5,
-    text: "Trending",
-    path: "/tv-series/trending",
+    text: "Airing Today",
+    path: "/tv-series/airing-today",
   },
 ];
