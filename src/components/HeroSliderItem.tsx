@@ -62,7 +62,7 @@ const HeroSliderItem = ({ item, isActive, pauseSwiper, resumeSwiper }) => {
         <img
           src={apiConfig.w500Image(item.poster_path)}
           alt=""
-          className={`w-[22rem] rounded-3xl scale-50 transition duration-700 ${
+          className={`w-[22rem] rounded-md scale-50 transition duration-700 ${
             isActive && "!scale-100"
           }`}
         />
