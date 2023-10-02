@@ -2,9 +2,10 @@ import apiConfig from "../../api/apiConfig.ts";
 
 type Props = {
   image: string;
+  backdropClasses?: string;
 };
 
-const ItemBanner: React.FC<Props> = ({ image }) => {
+const ItemBanner: React.FC<Props> = ({ image, backdropClasses }) => {
   return (
     <div
       className="relative h-[65vh] bg-cover bg-center"
@@ -12,7 +13,11 @@ const ItemBanner: React.FC<Props> = ({ image }) => {
         backgroundImage: image ? `url(${apiConfig.originalImage(image)})` : "",
       }}
     >
-      <div className="absolute inset-0 z-30 w-full h-full bg-black bg-opacity-10"></div>
+      <div
+        className={`absolute inset-0 z-30 w-full h-full bg-black bg-opacity-10 ${
+          backdropClasses ?? ""
+        }`}
+      ></div>
       <div
         className="absolute inset-0 z-30 w-full h-full"
         style={{
