@@ -1,8 +1,14 @@
 import { useState, useEffect } from "react";
-import Modal from "../ui/Modal.jsx";
+import Modal from "../ui/Modal";
 import tmdbApi from "../api/tmdbApi.js";
 
-const HeroSliderTrailerModal = ({
+type Props = {
+  movieId: number;
+  modalIsOpen: boolean;
+  closeTrailerModal: () => void;
+};
+
+const HeroSliderTrailerModal: React.FC<Props> = ({
   movieId,
   modalIsOpen,
   closeTrailerModal,
