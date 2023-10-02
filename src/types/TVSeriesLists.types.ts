@@ -1,1 +1,6 @@
-export type TVSeriesLists = "on_the_air" | "popular" | "top_rated";
+export type TVSeriesListsTypes =
+  | "popular"
+  | "trending"
+  | "top_rated"
+  | "airing_today"
+  | "on_the_air";

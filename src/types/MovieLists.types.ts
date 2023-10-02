@@ -1,1 +1,6 @@
-export type movieListsTypes = "upcoming" | "popular" | "top_rated";
+export type movieListsTypes =
+  | "popular"
+  | "trending"
+  | "top_rated"
+  | "now-playing"
+  | "upcoming";
