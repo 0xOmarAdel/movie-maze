@@ -3,7 +3,7 @@ type Props = {
 };
 
 const ItemTitle: React.FC<Props> = ({ title }) => {
-  return <h2 className="text-5xl text-white font-medium">{title}</h2>;
+  return <h2 className="text-4xl md:text-5xl text-white font-medium">{title}</h2>;
 };
 
 export default ItemTitle;
