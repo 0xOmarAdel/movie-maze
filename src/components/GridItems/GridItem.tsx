@@ -1,8 +1,8 @@
-import apiConfig from "../../api/apiConfig.js";
 import { useNavigate } from "react-router-dom";
-import ItemRating from "../ItemPageInfo/ItemRating";
-import { dateFormatter } from "../../utils/dateFormatter.js";
 import { CategoriesTypes } from "../../types/Categories.types.js";
+import { dateFormatter } from "../../utils/dateFormatter.js";
+import apiConfig from "../../api/apiConfig.js";
+import ItemRating from "../ItemPageInfo/ItemRating";
 
 type Props = {
   category: CategoriesTypes;
@@ -10,6 +10,7 @@ type Props = {
 
 const GridItem: React.FC<Props> = ({ item, category }) => {
   const navigate = useNavigate();
+
   const link = "/" + category + "/" + item.id;
   const bg = apiConfig.w500Image(item.poster_path || item.backdrop_path);
 

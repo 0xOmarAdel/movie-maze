@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import Movie from "./SwiperListItem.js";
+import SwiperListItem from "./SwiperListItem.js";
 import tmdbApi from "../../api/tmdbApi.ts";
 import { movieListsTypes } from "../../types/MovieLists.types";
 import { TVSeriesTypes } from "../../types/TVSeries.types";
@@ -40,18 +40,22 @@ const SwiperListItems: React.FC<Props> = ({ id, type, category }) => {
 
   return (
     <div className="movie-list">
-      <Swiper
-        grabCursor={true}
-        slidesPerView={"auto"}
-        spaceBetween={20}
-        className="movie-list-swiper"
-      >
-        {items.map((item) => (
-          <SwiperSlide key={item.id}>
-            <Movie item={item} category={category} />
-          </SwiperSlide>
-        ))}
-      </Swiper>
+      {items.length > 0 ? (
+        <Swiper
+          grabCursor={true}
+          slidesPerView={"auto"}
+          spaceBetween={20}
+          className="movie-list-swiper"
+        >
+          {items.map((item) => (
+            <SwiperSlide key={item.id}>
+              <SwiperListItem item={item} category={category} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      ) : (
+        <p className="text-xl text-gray-300">Couldn't find any data.</p>
+      )}
     </div>
   );
 };
