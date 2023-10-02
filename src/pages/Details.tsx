@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { CategoriesTypes } from "../types/Categories.types.ts";
 import tmdbApi from "../api/tmdbApi.ts";
 import ItemRating from "../components/ItemPageInfo/ItemRating.tsx";
@@ -19,10 +19,19 @@ import SwiperList from "../components/SwiperList/SwiperList.tsx";
 import "react-circular-progressbar/dist/styles.css";
 
 const Details = () => {
+  const navigate = useNavigate();
   const { category, id } = useParams<{
     category: CategoriesTypes;
     id: string;
   }>();
+
+  useEffect(() => {
+    const allowedCategories = ["tv", "movie"];
+
+    if (!allowedCategories.includes(category!)) {
+      navigate("/error");
+    }
+  }, [navigate, category]);
 
   const [item, setItem] = useState<any>(null);
 
