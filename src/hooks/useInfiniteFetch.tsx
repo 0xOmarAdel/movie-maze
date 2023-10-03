@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { useState, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 
@@ -24,6 +24,10 @@ const useInfiniteFetch = <T,>(
   const [total, setTotal] = useState(0);
 
   const paramsRef = useRef(params);
+
+  useEffect(() => {
+    paramsRef.current = params;
+  }, [params]);
 
   const getUniqueData = useCallback(
     (data: T[]) => {
@@ -50,14 +54,16 @@ const useInfiniteFetch = <T,>(
 
         const response: AxiosResponse<{
           results: T[];
+          total_pages: number;
           total_results: number;
         }> = await axios({
           method: "get",
           url: `${url}?page=${pageToUse}`,
           params: paramsRef.current || {},
         });
+        console.log("has more", pageToUse < response.data.total_pages);
 
-        setHasMore(pageToUse < response.data.total_results / (pageToUse - 1));
+        setHasMore(pageToUse < response.data.total_pages);
         setTotal(response.data.total_results);
 
         setData((prevData) => {
@@ -85,6 +91,7 @@ const useInfiniteFetch = <T,>(
 
   const reFetch = useCallback(() => {
     setPage((prevState) => {
+      console.log(prevState);
       fetchData(1);
       return 1;
     });
