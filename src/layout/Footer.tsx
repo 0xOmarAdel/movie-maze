@@ -9,7 +9,7 @@ const Footer = () => {
 
   return (
     <div
-      className="page-container relative"
+      className="page-container py-12 relative"
       style={{ backgroundImage: `url(${footerBg})` }}
     >
       <div className="relative z-50 grid grid-cols-1 lg:grid-cols-3 gap-y-8 lg:gap-y-0 lg:gap-x-8">

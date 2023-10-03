@@ -52,7 +52,7 @@ const Details = () => {
       {item && (
         <>
           <ItemBanner image={item.backdrop_path || item.poster_path} />
-          <div className="page-container flex flex-col gap-14">
+          <div className="page-container py-12 flex flex-col gap-14">
             <div className="z-50 -mt-[26rem] flex flex-row justify-center gap-10">
               <ItemPoster image={item.poster_path || item.backdrop_path} />
               <div className="max-w-4xl flex flex-col gap-8">
