@@ -3,8 +3,11 @@ import { CategoriesTypes } from "../../types/Categories.types.js";
 import { dateFormatter } from "../../utils/dateFormatter.js";
 import apiConfig from "../../api/apiConfig.js";
 import ItemRating from "../ItemPageInfo/ItemRating";
+import { MovieType } from "../../types/Movie.types.js";
+import { TVSeriesType } from "../../types/TVSeries.types.js";
 
 type Props = {
+  item: MovieType & TVSeriesType;
   category: CategoriesTypes;
 };
 
