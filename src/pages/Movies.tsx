@@ -18,6 +18,10 @@ const Movies = () => {
   const [query, setQuery] = useState("");
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     const allowedTypes = [
       "upcoming",
       "now-playing",
