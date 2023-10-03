@@ -10,6 +10,7 @@ import ItemBanner from "../components/ItemPageInfo/ItemBanner.tsx";
 import { MovieType } from "../types/Movie.types.js";
 import { TVSeriesType } from "../types/TVSeries.types.js";
 import CardSkeleton from "../skeletons/CardSkeleton.tsx";
+import { toast } from "react-toastify";
 
 const Movies = () => {
   const { type } = useParams();
@@ -38,6 +39,7 @@ const Movies = () => {
   const {
     data: profilePosts,
     initialLoading,
+    error,
     hasMore: feedPostsHasMore,
     reFetch,
     fetchMoreData,
@@ -69,6 +71,12 @@ const Movies = () => {
   useEffect(() => {
     reFetch();
   }, [query]);
+
+  useEffect(() => {
+    if (error) {
+      toast.info("An error occurred!");
+    }
+  }, [error]);
 
   const isActiveLink = (link: string) => {
     return (

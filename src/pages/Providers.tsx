@@ -5,6 +5,7 @@ import { ProvidersType } from "../types/Providers.types";
 import useAxios from "../hooks/useAxios.tsx";
 import { ProviderType } from "../types/Provider.types.ts";
 import apiConfig from "../api/apiConfig.ts";
+import { toast } from "react-toastify";
 
 const Providers = () => {
   const { category } = useParams();
@@ -45,7 +46,11 @@ const Providers = () => {
     { id: 2, text: "TV Series", path: "/providers/tv", value: "tv" },
   ];
 
-  console.log(error);
+  useEffect(() => {
+    if (error) {
+      toast.info("An error occurred!");
+    }
+  }, [error]);
 
   return (
     <>
