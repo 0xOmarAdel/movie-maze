@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { CategoriesTypes } from "../types/Categories.types.ts";
-import tmdbApi from "../api/tmdbApi.ts";
 import ItemRating from "../components/ItemPageInfo/ItemRating.tsx";
 import ItemOverview from "../components/ItemPageInfo/ItemOverview.tsx";
 import ItemStatus from "../components/ItemPageInfo/ItemStatus.tsx";
@@ -17,6 +16,9 @@ import CastList from "../components/ItemPageInfo/CastList.tsx";
 import Trailer from "../components/ItemPageInfo/Trailer.tsx";
 import SwiperList from "../components/SwiperList/SwiperList.tsx";
 import "react-circular-progressbar/dist/styles.css";
+import useAxios from "../hooks/useAxios.tsx";
+import { MovieDetailsType } from "../types/MovieDetails.types.ts";
+import { TVSeriesDetailsType } from "../types/TVSeriesDetails.types.ts";
 
 const Details = () => {
   const navigate = useNavigate();
@@ -33,17 +35,17 @@ const Details = () => {
     }
   }, [navigate, category]);
 
-  const [item, setItem] = useState<any>(null);
+  const {
+    data: item,
+    loading,
+    error,
+  } = useAxios<MovieDetailsType & TVSeriesDetailsType>(category + "/" + id);
 
   useEffect(() => {
-    const getDetail = async () => {
-      const response = await tmdbApi.detail(category!, id!, { params: {} });
-      setItem(response);
-      window.scrollTo(0, 0);
-      console.log(response);
-    };
-    getDetail();
+    window.scrollTo(0, 0);
   }, [category, id]);
+
+  console.log(loading, error);
 
   return (
     <>
@@ -63,9 +65,9 @@ const Details = () => {
                     <ItemTagLine tagline={item.tagline} />
                   </div>
                   <Genres genres={item.genres} />
-                  <div className="flex flex-col gap-5">
+                  <div className="flex flex-col gap-4">
                     <ItemOverview overview={item.overview} />
-                    <div className="flex flex-col md:flex-row gap-6">
+                    <div className="flex flex-col md:flex-row gap-3 md:gap-6">
                       <ItemStatus status={item.status} />
                       <ItemReleaseDate
                         date={item.release_date ?? item.first_air_date}
@@ -87,10 +89,9 @@ const Details = () => {
                 title={`Similar ${
                   category === "movie" ? "Movies" : "TV Shows"
                 }`}
-                category={category}
+                category={category!}
                 type="similar"
                 id={item.id}
-                link={false}
               />
             </div>
           </div>

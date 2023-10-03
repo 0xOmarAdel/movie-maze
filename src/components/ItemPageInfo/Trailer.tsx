@@ -1,37 +1,35 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
-import tmdbApi from "../../api/tmdbApi";
 import { CategoriesTypes } from "../../types/Categories.types";
+import useAxios from "../../hooks/useAxios.tsx";
+import { VideosType } from "../../types/Videos.types.ts";
 
 const Trailer: React.FC = () => {
   const { category, id } = useParams<{
     category: CategoriesTypes;
     id: string;
   }>();
+  const [videoSrc, setVideoSrc] = useState("");
 
-  const [trailer, setTrailer] = useState();
+  const { data, loading, error } = useAxios<VideosType>(
+    category + "/" + id + "/videos"
+  );
 
   useEffect(() => {
-    const getVideos = async () => {
-      const res = await tmdbApi.getVideos(category!, id!);
+    if (data && data.results.length > 0) {
+      setVideoSrc("https://www.youtube.com/embed/" + data.results[0].key);
+    }
+  }, [data]);
 
-      const trailerObj = res.results.find((obj) =>
-        obj.name.toLowerCase().includes("trailer")
-      );
-      console.log(res);
-
-      setTrailer(trailerObj || res.results[0]);
-    };
-    getVideos();
-  }, [category, id]);
+  console.log(loading, error);
 
   return (
     <>
-      {trailer && (
+      {videoSrc && (
         <div className="flex flex-col items-center justify-center">
           <div className="max-w-5xl w-full">
             <iframe
-              src={`https://www.youtube.com/embed/${trailer.key}`}
+              src={videoSrc}
               className="aspect-video"
               width="100%"
               title="video"

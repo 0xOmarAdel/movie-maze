@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Modal from "../ui/Modal";
-import tmdbApi from "../api/tmdbApi.js";
+import useAxios from "../hooks/useAxios.tsx";
+import { VideosType } from "../types/Videos.types.ts";
 
 type Props = {
   movieId: number;
@@ -15,22 +16,21 @@ const HeroSliderTrailerModal: React.FC<Props> = ({
 }) => {
   const [videoSrc, setVideoSrc] = useState("");
 
+  const { data, loading, error } = useAxios<VideosType>(
+    "movie/" + movieId + "/videos"
+  );
+
   useEffect(() => {
-    const fetchVideos = async () => {
-      const response = await tmdbApi.getVideos("movie", movieId);
-      const videos = response.data;
-
-      if (videos.results.length > 0) {
-        setVideoSrc("https://www.youtube.com/embed/" + videos.results[0].key);
-      }
-    };
-
-    fetchVideos();
-  }, [movieId]);
+    if (data && data.results.length > 0) {
+      setVideoSrc("https://www.youtube.com/embed/" + data.results[0].key);
+    }
+  }, [data]);
 
   const closeModal = () => {
     closeTrailerModal();
   };
+
+  console.log(loading, error);
 
   return (
     <Modal isOpen={modalIsOpen} onClose={closeModal}>

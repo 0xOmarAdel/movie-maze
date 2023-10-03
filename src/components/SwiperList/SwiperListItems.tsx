@@ -2,52 +2,50 @@ import { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import SwiperListItem from "./SwiperListItem.js";
-import tmdbApi from "../../api/tmdbApi.ts";
 import { movieListsTypes } from "../../types/MovieLists.types";
-import { TVSeriesTypes } from "../../types/TVSeries.types";
+import { TVSeriesListsTypes } from "../../types/TVSeriesLists.types.ts";
 import { CategoriesTypes } from "../../types/Categories.types";
+import useAxios from "../../hooks/useAxios.tsx";
+import { MovieType } from "../../types/Movie.types.ts";
+import { TVSeriesType } from "../../types/TVSeries.types.ts";
+
+type AxiosResponse = {
+  page: number;
+  results: (MovieType & TVSeriesType)[];
+  total_pages: number;
+  total_results: number;
+};
 
 type Props = {
-  id?: string;
-  type: movieListsTypes | TVSeriesTypes | "similar";
+  id?: number;
+  type: movieListsTypes | TVSeriesListsTypes | "similar";
   category: CategoriesTypes;
 };
 
 const SwiperListItems: React.FC<Props> = ({ id, type, category }) => {
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState<(MovieType & TVSeriesType)[]>();
+  const { data, loading, error } = useAxios<AxiosResponse>(
+    category + (type === "similar" ? "/" + id + "/similar" : "/" + type)
+  );
 
   useEffect(() => {
-    const getList = async () => {
-      let response = null;
-      const params = {};
+    if (data) {
+      setItems(data.results);
+    }
+  }, [data]);
 
-      if (type !== "similar") {
-        if (category === "movie") {
-          response = await tmdbApi.getMoviesList(type as movieListsTypes, {
-            params,
-          });
-        } else {
-          response = await tmdbApi.getTvList(type as TVSeriesTypes, { params });
-        }
-      } else {
-        response = await tmdbApi.similar(category, id);
-      }
-
-      setItems(response.results);
-    };
-    getList();
-  }, [category, id, type]);
+  console.log(loading, error);
 
   return (
     <div className="movie-list">
-      {items.length > 0 ? (
+      {items && items.length > 0 ? (
         <Swiper
           grabCursor={true}
           slidesPerView={"auto"}
           spaceBetween={20}
           className="movie-list-swiper"
         >
-          {items.map((item) => (
+          {items?.map((item) => (
             <SwiperSlide key={item.id}>
               <SwiperListItem item={item} category={category} />
             </SwiperSlide>
