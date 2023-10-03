@@ -1,13 +1,7 @@
-interface Person {
-  adult: boolean;
-  gender: number;
-  id: number;
-  known_for_department: string;
-  name: string;
-}
+import { PersonType } from "./Person.types";
 
 export type CastType = {
-  cast: Person[];
-  crew: Person[];
+  cast: PersonType[];
+  crew: PersonType[];
   id: number;
 };
