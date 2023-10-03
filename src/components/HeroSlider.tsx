@@ -7,6 +7,7 @@ import { Swiper as SwiperClass } from "swiper";
 import HeroSliderItem from "./HeroSliderItem.js";
 import { MovieType } from "../types/Movie.types.ts";
 import useAxios from "../hooks/useAxios.tsx";
+import { toast } from "react-toastify";
 
 type AxiosResponse = {
   page: number;
@@ -18,7 +19,7 @@ type AxiosResponse = {
 const HeroSlider = () => {
   const [movies, setMovies] = useState<MovieType[]>([]);
 
-  const { data, loading, error } = useAxios<AxiosResponse>("movie/popular");
+  const { data, error } = useAxios<AxiosResponse>("movie/popular");
 
   useEffect(() => {
     if (data) {
@@ -26,7 +27,11 @@ const HeroSlider = () => {
     }
   }, [data]);
 
-  console.log(loading, error);
+  useEffect(() => {
+    if (error) {
+      toast.info("An error occurred!");
+    }
+  }, [error]);
 
   const swiperRef = useRef<SwiperClass | null>(null);
 
@@ -47,7 +52,7 @@ const HeroSlider = () => {
   };
 
   return (
-    <div className="">
+    <div className="min-h-[100vh]">
       <Swiper
         autoplay={{
           delay: 3000,
