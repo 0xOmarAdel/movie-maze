@@ -1,7 +1,7 @@
 import SkeletonShimmer from "./SkeletonShimmer";
 
 type Props = {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   className?: string;
 };
 
