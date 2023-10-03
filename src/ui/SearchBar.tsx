@@ -2,22 +2,38 @@ import { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import "./SearchBar.css";
 
-const SearchBar = (props) => {
-  const [isActive, setIsActive] = useState(null);
-  const [placeholder, setPlaceholder] = useState(props.placeholder);
-  const [counter, setCounter] = useState(0);
-  const [operation, setOperation] = useState(null);
+type Props = {
+  placeholder: string;
+  value: string;
+  onSearch: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onIconClick?: () => void;
+  containerClass?: string;
+  inputClass?: string;
+};
 
-  const editPlaceholder = (value) => {
+const SearchBar: React.FC<Props> = ({
+  placeholder,
+  value,
+  onSearch,
+  onIconClick,
+  containerClass,
+  inputClass,
+}) => {
+  const [isActive, setIsActive] = useState<boolean>(false);
+  const [inputPlaceholder, setInputPlaceholder] = useState(placeholder);
+  const [counter, setCounter] = useState(0);
+  const [operation, setOperation] = useState<"write" | "delete" | null>(null);
+
+  const editPlaceholder = (value: -1 | 1) => {
     setCounter((prevCounter) => prevCounter + value);
     if (operation === "delete") {
-      setPlaceholder((prevPlaceholder) =>
+      setInputPlaceholder((prevPlaceholder) =>
         prevPlaceholder.substr(0, prevPlaceholder.length - value)
       );
     } else if (operation === "write") {
-      setPlaceholder(
+      setInputPlaceholder(
         (prevPlaceholder) =>
-          prevPlaceholder + props.placeholder.substr(prevPlaceholder.length, 1)
+          prevPlaceholder + placeholder.substr(prevPlaceholder.length, 1)
       );
     }
   };
@@ -34,7 +50,7 @@ const SearchBar = (props) => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (operation === "delete" && counter < props.placeholder.length) {
+      if (operation === "delete" && counter < placeholder.length) {
         editPlaceholder(1);
       } else if (operation === "write" && counter > 0) {
         editPlaceholder(-1);
@@ -44,14 +60,14 @@ const SearchBar = (props) => {
     return () => {
       clearTimeout(timer);
     };
-  }, [counter, editPlaceholder, operation, props.placeholder.length]);
+  }, [counter, editPlaceholder, operation, placeholder.length]);
 
   let containerClasses = "search-bar-container";
   containerClasses += isActive ? " active" : "";
-  containerClasses += props.containerClass ? " " + props.containerClass : "";
+  containerClasses += containerClass ? " " + containerClass : "";
 
-  const inputClasses = props.inputClass
-    ? "search-bar" + " " + props.inputClass
+  const inputClasses = inputClass
+    ? "search-bar" + " " + inputClass
     : "search-bar";
 
   return (
@@ -59,17 +75,14 @@ const SearchBar = (props) => {
       <input
         type="text"
         id="search"
-        placeholder={placeholder}
+        placeholder={inputPlaceholder}
         className={inputClasses}
-        value={props.value}
-        onChange={(e) => props.onSearch(e)}
+        value={value}
+        onChange={(e) => onSearch(e)}
         onFocus={focusHandler}
         onBlur={blurHandler}
       />
-      <div
-        className="icon-container"
-        onClick={props.onIconClick ? props.onIconClick : () => {}}
-      >
+      <div className="icon-container" onClick={onIconClick || (() => {})}>
         <FaSearch className="icon" />
       </div>
     </form>
