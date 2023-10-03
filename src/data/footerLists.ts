@@ -19,7 +19,7 @@ export const mainList: ListType = [
   {
     id: 4,
     text: "TV Providers",
-    path: "/providers/tv",
+    path: "/providers/tv-series",
   },
 ];
 
