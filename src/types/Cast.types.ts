@@ -6,7 +6,7 @@ interface Person {
   name: string;
 }
 
-export type Cast = {
+export type CastType = {
   cast: Person[];
   crew: Person[];
   id: number;
