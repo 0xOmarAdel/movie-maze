@@ -16,9 +16,7 @@ const HeroSliderTrailerModal: React.FC<Props> = ({
 }) => {
   const [videoSrc, setVideoSrc] = useState("");
 
-  const { data, loading, error } = useAxios<VideosType>(
-    "movie/" + movieId + "/videos"
-  );
+  const { data } = useAxios<VideosType>("movie/" + movieId + "/videos");
 
   useEffect(() => {
     if (data && data.results.length > 0) {
@@ -29,8 +27,6 @@ const HeroSliderTrailerModal: React.FC<Props> = ({
   const closeModal = () => {
     closeTrailerModal();
   };
-
-  console.log(loading, error);
 
   return (
     <Modal isOpen={modalIsOpen} onClose={closeModal}>
