@@ -5,10 +5,10 @@ import Backdrop from "./Backdrop";
 import "./Modal.css";
 
 type Props = {
-  className: string;
   isOpen: boolean;
   onClose: () => void;
   children: React.ReactNode;
+  className?: string;
 };
 
 const Modal: React.FC<Props> = (props) => {
