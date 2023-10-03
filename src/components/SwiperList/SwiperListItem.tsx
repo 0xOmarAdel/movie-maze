@@ -1,8 +1,16 @@
 import { useNavigate } from "react-router-dom";
 import apiConfig from "../../api/apiConfig.js";
 import ItemRating from "../ItemPageInfo/ItemRating";
+import { CategoriesTypes } from "../../types/Categories.types.js";
+import { MovieType } from "../../types/Movie.types.js";
+import { TVSeriesType } from "../../types/TVSeries.types.js";
 
-const SwiperListItem = ({ item, category }) => {
+type Props = {
+  item: MovieType & TVSeriesType;
+  category: CategoriesTypes;
+};
+
+const SwiperListItem: React.FC<Props> = ({ item, category }) => {
   const navigate = useNavigate();
 
   const link = "/" + category + "/" + item.id;

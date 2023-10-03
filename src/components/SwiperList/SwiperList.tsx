@@ -1,7 +1,18 @@
 import { Link } from "react-router-dom";
 import SwiperListItems from "./SwiperListItems.js";
+import { CategoriesTypes } from "../../types/Categories.types";
+import { movieListsTypes } from "../../types/MovieLists.types";
+import { TVSeriesListsTypes } from "../../types/TVSeriesLists.types";
 
-const SwiperList = ({ title, link, category, type, id }) => {
+type Props = {
+  title: string;
+  category: CategoriesTypes;
+  type: movieListsTypes | TVSeriesListsTypes | "similar";
+  link?: string;
+  id?: number;
+};
+
+const SwiperList: React.FC<Props> = ({ title, link, category, type, id }) => {
   return (
     <div className="flex flex-col gap-5">
       <div className="flex flex-row items-center justify-between">
