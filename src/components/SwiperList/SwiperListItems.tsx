@@ -9,6 +9,7 @@ import useAxios from "../../hooks/useAxios.tsx";
 import { MovieType } from "../../types/Movie.types.ts";
 import { TVSeriesType } from "../../types/TVSeries.types.ts";
 import CardSkeleton from "../../skeletons/CardSkeleton.tsx";
+import { toast } from "react-toastify";
 
 type AxiosResponse = {
   page: number;
@@ -43,18 +44,21 @@ const SwiperListItems: React.FC<Props> = ({
 
   useEffect(() => {
     if (!loading) {
-      console.log(loading);
       setSwiperLoading(false);
     }
   }, [loading, setSwiperLoading]);
 
-  console.log(loading, error);
+  useEffect(() => {
+    if (error) {
+      toast.info("An error occurred!");
+    }
+  }, [error]);
 
   return (
     <div className="movie-list">
       {loading ? (
-        <div className="flex flex-row gap-10">
-          <CardSkeleton repeat={5} className="w-56" />
+        <div className="grid grid-flow-col gap-5 overflow-hidden">
+          <CardSkeleton repeat={10} className="w-56" />
         </div>
       ) : items && items.length > 0 ? (
         <Swiper
