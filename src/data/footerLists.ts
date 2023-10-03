@@ -6,11 +6,7 @@ export const mainList: ListType = [
     text: "Home",
     path: "/",
   },
-  {
-    id: 2,
-    text: "About Us",
-    path: "/about-us",
-  },
+
   {
     id: 3,
     text: "Movie Providers",
