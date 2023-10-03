@@ -9,6 +9,7 @@ import SearchBar from "../ui/SearchBar.tsx";
 import ItemBanner from "../components/ItemPageInfo/ItemBanner.tsx";
 import { MovieType } from "../types/Movie.types.js";
 import { TVSeriesType } from "../types/TVSeries.types.js";
+import CardSkeleton from "../skeletons/CardSkeleton.tsx";
 
 const Movies = () => {
   const { type } = useParams();
@@ -78,7 +79,7 @@ const Movies = () => {
         image="/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg"
         backdropClasses="!bg-opacity-75"
       />
-      <div className="relative z-50 -mt-[26rem] py-12 px-6 sm:px-10 md:px-14 lg:px-16 xl:px-22 flex flex-col gap-10">
+      <div className="page-container relative z-50 -mt-[26rem] py-12 flex flex-col gap-10">
         <div className="flex flex-col gap-6">
           <h2 className="text-4xl text-white font-medium">Movies</h2>
           <ul className="flex flex-row flex-wrap gap-4 text-2xl text-white">
@@ -104,21 +105,30 @@ const Movies = () => {
             containerClass="max-w-sm"
           />
         </div>
-        {initialLoading || (profilePosts && profilePosts?.length > 0) ? (
+        {initialLoading ? (
+          <div className="grid grid-cols-itemsGrid gap-8">
+            <CardSkeleton repeat={10} />
+          </div>
+        ) : profilePosts && profilePosts?.length > 0 ? (
           <InfiniteScroll
             dataLength={profilePosts?.length || 0}
             next={fetchMoreData}
             hasMore={feedPostsHasMore}
-            loader={<p>ss</p>}
+            loader={
+              <>
+                <CardSkeleton repeat={10} />
+              </>
+            }
+            className="grid grid-cols-itemsGrid gap-8 !overflow-hidden"
           >
-            <div className="grid grid-cols-itemsGrid gap-8">
-              {profilePosts?.map((item) => (
-                <GridItem key={item.id} item={item} category="movie" />
-              ))}
-            </div>
+            {profilePosts?.map((item) => (
+              <GridItem key={item.id} item={item} category="movie" />
+            ))}
           </InfiniteScroll>
         ) : (
-          <p className="text-white">Loading..</p>
+          <p className="text-xl text-gray-300">
+            Couldn't find anything related to your search query.
+          </p>
         )}
       </div>
     </>
