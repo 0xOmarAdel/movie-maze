@@ -7,6 +7,7 @@ import AboutUs from "./pages/AboutUs";
 import Movies from "./pages/Movies";
 import TVSeries from "./pages/TVSeries";
 import Details from "./pages/Details";
+import Providers from "./pages/Providers";
 
 const App: React.FC = () => {
   return (
@@ -19,6 +20,7 @@ const App: React.FC = () => {
           <Route path="/:category/:id" element={<Details />} />
           <Route path="/movies/:type" element={<Movies />} />
           <Route path="/tv-series/:type" element={<TVSeries />} />
+          <Route path="/providers/:category" element={<Providers />} />
         </Route>
       </Routes>
     </>
