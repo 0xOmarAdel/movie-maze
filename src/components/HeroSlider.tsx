@@ -3,12 +3,14 @@ import { Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/autoplay";
+import { Swiper as SwiperClass } from "swiper";
 import tmdbApi from "../api/tmdbApi.ts";
 import HeroSliderItem from "./HeroSliderItem.js";
+import { MovieType } from "../types/Movie.types.ts";
 
 const HeroSlider = () => {
-  const [movies, setMovies] = useState([]);
-  const swiperRef = useRef(null);
+  const [movies, setMovies] = useState<MovieType[]>([]);
+  const swiperRef = useRef<SwiperClass | null>(null);
 
   useEffect(() => {
     const getMovies = async () => {
@@ -17,7 +19,8 @@ const HeroSlider = () => {
         const response = await tmdbApi.getMoviesList("popular", {
           params,
         });
-        setMovies(response.results.slice(0, 5));
+        const movies = response.data.results;
+        setMovies(movies.slice(0, 5));
       } catch {
         console.log("error");
       }
@@ -26,15 +29,19 @@ const HeroSlider = () => {
   }, []);
 
   const pauseSwiper = () => {
-    if (swiperRef.current?.swiper) {
-      swiperRef.current.swiper.autoplay.stop();
+    if (swiperRef.current) {
+      swiperRef.current.autoplay.stop();
     }
   };
 
   const resumeSwiper = () => {
-    if (swiperRef.current?.swiper) {
-      swiperRef.current.swiper.autoplay.start();
+    if (swiperRef.current) {
+      swiperRef.current.autoplay.start();
     }
+  };
+
+  const updateSwiperRef = (swiper: SwiperClass) => {
+    swiperRef.current = swiper;
   };
 
   return (
@@ -49,7 +56,7 @@ const HeroSlider = () => {
         spaceBetween={0}
         slidesPerView={1}
         loop={true}
-        ref={swiperRef}
+        onSwiper={updateSwiperRef}
       >
         {movies.map((item) => (
           <SwiperSlide key={item.id}>
