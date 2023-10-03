@@ -2,7 +2,7 @@ import apiConfig from "../../api/apiConfig.ts";
 import imagePlaceHolder from "../../assets/image-placeholder.png";
 
 type Props = {
-  image: string;
+  image: string | null;
 };
 
 const ItemPoster: React.FC<Props> = ({ image }) => {
