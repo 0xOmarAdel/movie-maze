@@ -8,6 +8,7 @@ import { CategoriesTypes } from "../../types/Categories.types";
 import useAxios from "../../hooks/useAxios.tsx";
 import { MovieType } from "../../types/Movie.types.ts";
 import { TVSeriesType } from "../../types/TVSeries.types.ts";
+import CardSkeleton from "../../skeletons/CardSkeleton.tsx";
 
 type AxiosResponse = {
   page: number;
@@ -20,9 +21,15 @@ type Props = {
   id?: number;
   type: movieListsTypes | TVSeriesListsTypes | "similar";
   category: CategoriesTypes;
+  setSwiperLoading: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const SwiperListItems: React.FC<Props> = ({ id, type, category }) => {
+const SwiperListItems: React.FC<Props> = ({
+  id,
+  type,
+  category,
+  setSwiperLoading,
+}) => {
   const [items, setItems] = useState<(MovieType & TVSeriesType)[]>();
   const { data, loading, error } = useAxios<AxiosResponse>(
     category + (type === "similar" ? "/" + id + "/similar" : "/" + type)
@@ -34,22 +41,35 @@ const SwiperListItems: React.FC<Props> = ({ id, type, category }) => {
     }
   }, [data]);
 
+  useEffect(() => {
+    if (!loading) {
+      console.log(loading);
+      setSwiperLoading(false);
+    }
+  }, [loading, setSwiperLoading]);
+
   console.log(loading, error);
 
   return (
     <div className="movie-list">
-      {items && items.length > 0 ? (
+      {loading ? (
+        <div className="flex flex-row gap-10">
+          <CardSkeleton repeat={5} className="w-56" />
+        </div>
+      ) : items && items.length > 0 ? (
         <Swiper
           grabCursor={true}
           slidesPerView={"auto"}
           spaceBetween={20}
           className="movie-list-swiper"
         >
-          {items?.map((item) => (
-            <SwiperSlide key={item.id}>
-              <SwiperListItem item={item} category={category} />
-            </SwiperSlide>
-          ))}
+          {items && items.length > 0
+            ? items.map((item) => (
+                <SwiperSlide key={item.id}>
+                  <SwiperListItem item={item} category={category} />
+                </SwiperSlide>
+              ))
+            : ""}
         </Swiper>
       ) : (
         <p className="text-xl text-gray-300">Couldn't find any data.</p>
