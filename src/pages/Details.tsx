@@ -35,17 +35,19 @@ const Details = () => {
     }
   }, [navigate, category]);
 
-  const {
-    data: item,
-    loading,
-    error,
-  } = useAxios<MovieDetailsType & TVSeriesDetailsType>(category + "/" + id);
+  const { data: item, error } = useAxios<
+    MovieDetailsType & TVSeriesDetailsType
+  >(category + "/" + id);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [category, id]);
 
-  console.log(loading, error);
+  useEffect(() => {
+    if (error) {
+      navigate("/error");
+    }
+  }, [error, navigate]);
 
   return (
     <>
