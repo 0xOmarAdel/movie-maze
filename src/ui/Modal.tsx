@@ -4,14 +4,29 @@ import { RiCloseLine } from "react-icons/ri";
 import Backdrop from "./Backdrop";
 import "./Modal.css";
 
-const Modal = (props) => {
-  const [modalClasses, setModalClasses] = useState("modal modal-hidden");
+type Props = {
+  className: string;
+  isOpen: boolean;
+  onClose: () => void;
+  children: React.ReactNode;
+};
+
+const Modal: React.FC<Props> = (props) => {
+  const [modalClasses, setModalClasses] = useState(
+    props.className
+      ? props.className + " modal modal-hidden"
+      : " modal modal-hidden"
+  );
   const [backdropClasses, setBackdropClasses] = useState(
     "backdrop backdrop-hidden"
   );
 
   const closeModal = () => {
-    setModalClasses("modal modal-hidden");
+    setModalClasses(
+      props.className
+        ? props.className + " modal modal-hidden"
+        : "modal modal-hidden"
+    );
     setBackdropClasses("backdrop backdrop-hidden");
 
     /*
@@ -25,25 +40,33 @@ const Modal = (props) => {
 
   useEffect(() => {
     if (props.isOpen) {
-      setModalClasses("modal modal-visible");
+      setModalClasses(
+        props.className
+          ? props.className + " modal modal-visible"
+          : "modal modal-visible"
+      );
       setBackdropClasses("backdrop backdrop-visible");
     } else {
-      setModalClasses("modal modal-hidden");
+      setModalClasses(
+        props.className
+          ? props.className + " modal modal-hidden"
+          : "modal modal-hidden"
+      );
       setBackdropClasses("backdrop backdrop-hidden");
     }
-  }, [props.isOpen]);
+  }, [props.className, props.isOpen]);
 
   if (!props.isOpen) return;
 
   return ReactDOM.createPortal(
     <>
-      <Backdrop backdropClasses={backdropClasses} onClose={closeModal} />
+      <Backdrop className={backdropClasses} onClose={closeModal} />
       <div className={modalClasses}>
         <RiCloseLine className="modal-close-icon" onClick={closeModal} />
         {props.children}
       </div>
     </>,
-    document.getElementById("portal")
+    document.getElementById("portal") as Element
   );
 };
 
