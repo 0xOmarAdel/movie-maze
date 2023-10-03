@@ -31,7 +31,7 @@ const Providers = () => {
 
   useEffect(() => {
     if (data) {
-      setProviders(data.results.slice(0, 25));
+      setProviders(data.results.slice(0, 50));
     }
   }, [data]);
 
