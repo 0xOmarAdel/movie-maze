@@ -3,7 +3,6 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import GridItem from "../components/GridItems/GridItem.tsx";
 import useInfiniteFetch from "../hooks/useInfiniteFetch.tsx";
 import InfiniteScroll from "react-infinite-scroll-component";
-import apiConfig from "../api/apiConfig";
 import { seriesList } from "../data/footerLists";
 import SearchBar from "../ui/SearchBar.tsx";
 import ItemBanner from "../components/ItemPageInfo/ItemBanner.tsx";
@@ -11,6 +10,7 @@ import { MovieType } from "../types/Movie.types.js";
 import { TVSeriesType } from "../types/TVSeries.types.js";
 import CardSkeleton from "../skeletons/CardSkeleton.tsx";
 import { toast } from "react-toastify";
+import { apiKey } from "../api/apiKey";
 
 const TVSeries = () => {
   const { type } = useParams();
@@ -54,11 +54,11 @@ const TVSeries = () => {
     "id",
     query
       ? {
-          api_key: apiConfig.apiKey,
+          api_key: apiKey,
           query,
         }
       : {
-          api_key: apiConfig.apiKey,
+          api_key: apiKey,
         }
   );
 

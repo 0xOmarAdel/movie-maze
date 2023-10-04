@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import apiConfig from "../api/apiConfig.ts";
+import { apiKey } from "../api/apiKey";
 
 interface AxiosResponse<T> {
   data: T;
@@ -21,7 +22,7 @@ const useAxios = <T,>(url: string, queryParams?: QueryParams) => {
       const response: AxiosResponse<T> = await axios({
         method: "get",
         url: apiConfig.baseUrl + url,
-        params: { api_key: apiConfig.apiKey, ...queryParams },
+        params: { api_key: apiKey, ...queryParams },
       });
       setData(response.data);
     } catch (error) {
