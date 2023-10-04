@@ -61,7 +61,6 @@ const useInfiniteFetch = <T,>(
           url: `${url}?page=${pageToUse}`,
           params: paramsRef.current || {},
         });
-        console.log("has more", pageToUse < response.data.total_pages);
 
         setHasMore(pageToUse < response.data.total_pages);
         setTotal(response.data.total_results);
