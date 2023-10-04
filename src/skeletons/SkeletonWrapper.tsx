@@ -7,7 +7,7 @@ type Props = {
 
 const SkeletonWrapper: React.FC<Props> = ({ children, className }) => {
   let classes =
-    "relative h-fit px-8 py-6 bg-white rounded-xl shadow-lg overflow-hidden dark:bg-primaryDark dark:text-textLighter";
+    "relative h-fit px-8 py-6 bg-white rounded-xl shadow-lg overflow-hidden";
 
   if (className) {
     classes += " " + className;
