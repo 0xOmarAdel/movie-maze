@@ -59,7 +59,7 @@ const Providers = () => {
         image="/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg"
         backdropClasses="!bg-opacity-75"
       />
-      <div className="relative z-50 -mt-[30rem] md:-mt-[26rem] py-6 md:py-12 px-6 sm:px-10 md:px-14 lg:px-16 xl:px-22 flex flex-col gap-6 md:gap-10">
+      <div className="relative z-50 -mt-[50vh] pb-6 md:py-12 px-6 sm:px-10 md:px-14 lg:px-16 xl:px-22 flex flex-col gap-6 md:gap-10">
         <div className="flex flex-col gap-3 md:gap-6">
           <h2 className="text-3xl md:text-4xl text-white font-medium">
             Providers

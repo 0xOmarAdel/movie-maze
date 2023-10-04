@@ -91,7 +91,7 @@ const TVSeries = () => {
         image="/tsRy63Mu5cu8etL1X7ZLyf7UP1M.jpg"
         backdropClasses="!bg-opacity-75"
       />
-      <div className="page-container relative z-50 -mt-[30rem] md:-mt-[26rem] py-6 md:py-12 flex flex-col gap-6 md:gap-10">
+      <div className="page-container relative z-50 -mt-[50vh] pb-6 md:py-12 flex flex-col gap-6 md:gap-10">
         <div className="flex flex-col gap-3 md:gap-6">
           <h2 className="text-3xl md:text-4xl text-white font-medium">
             TV Series
