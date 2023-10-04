@@ -6,6 +6,7 @@ import useAxios from "../hooks/useAxios.tsx";
 import { ProviderType } from "../types/Provider.types.ts";
 import apiConfig from "../api/apiConfig.ts";
 import { toast } from "react-toastify";
+import ProviderSkeleton from "../skeletons/ProviderSkeleton.tsx";
 
 const Providers = () => {
   const { category } = useParams();
@@ -76,9 +77,11 @@ const Providers = () => {
             ))}
           </ul>
         </div>
-        {!loading ? (
-          <div className="grid grid-cols-providersGrid gap-8">
-            {providers?.map((item) => (
+        <div className="grid grid-cols-providersGrid gap-8">
+          {loading ? (
+            <ProviderSkeleton repeat={10} />
+          ) : (
+            providers?.map((item) => (
               <div key={item.provider_id} className="flex flex-col gap-3">
                 <img
                   src={apiConfig.w500Image(item.logo_path)}
@@ -87,11 +90,9 @@ const Providers = () => {
                 />
                 <p className="text-white text-center">{item.provider_name}</p>
               </div>
-            ))}
-          </div>
-        ) : (
-          <p className="text-white">Loading..</p>
-        )}
+            ))
+          )}
+        </div>
       </div>
     </>
   );
