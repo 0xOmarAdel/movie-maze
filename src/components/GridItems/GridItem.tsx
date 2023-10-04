@@ -5,6 +5,7 @@ import apiConfig from "../../api/apiConfig.js";
 import ItemRating from "../ItemPageInfo/ItemRating";
 import { MovieType } from "../../types/Movie.types.js";
 import { TVSeriesType } from "../../types/TVSeries.types.js";
+import imagePlaceHolder from "../../assets/image-placeholder.png";
 
 type Props = {
   item: MovieType & TVSeriesType;
@@ -23,7 +24,11 @@ const GridItem: React.FC<Props> = ({ item, category }) => {
         className="relative cursor-pointer group"
         onClick={() => navigate(link)}
       >
-        <img src={bg} alt="" className="rounded-md aspect-[1/1.5]" />
+        <img
+          src={item.poster_path || item.backdrop_path ? bg : imagePlaceHolder}
+          alt=""
+          className="rounded-md aspect-[1/1.5]"
+        />
         <div className="absolute bottom-0 z-40 text-white flex flex-col gap-2 px-4 py-3 opacity-0 scale-75 transition duration-300 delay-100 group-hover:opacity-100 group-hover:scale-100">
           <ItemRating rating={item.vote_average} small={true} />
         </div>
