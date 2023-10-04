@@ -9,18 +9,18 @@ const Footer = () => {
 
   return (
     <div
-      className="page-container py-12 relative"
+      className="page-container py-6 md:py-12 relative"
       style={{ backgroundImage: `url(${footerBg})` }}
     >
-      <div className="relative z-50 grid grid-cols-1 lg:grid-cols-3 gap-y-8 lg:gap-y-0 lg:gap-x-8">
-        <div className="flex flex-col items-center lg:items-start gap-6">
+      <div className="relative z-50 grid grid-cols-1 lg:grid-cols-3 gap-y-5 lg:gap-y-0 lg:gap-x-8">
+        <div className="flex flex-col items-center lg:items-start gap-3 md:gap-6">
           <Link to="/">
-            <div className="flex flex-row items-center gap-3 text-white text-4xl font-medium">
+            <div className="flex flex-row items-center gap-3 text-white text-3xl md:text-4xl font-medium">
               <FaPlay className="text-indigo-500 scale-105" />
               <p>Movie Maze</p>
             </div>
           </Link>
-          <ul className="flex flex-col items-center lg:items-start gap-3 text-2xl text-gray-300 font-medium">
+          <ul className="flex flex-col items-center lg:items-start gap-1.5 md:gap-3 text-xl md:text-2xl text-gray-300 font-medium">
             {mainList.map((item) => (
               <li key={item.id} className={listItemClasses}>
                 <Link to={item.path}>{item.text}</Link>
@@ -28,10 +28,10 @@ const Footer = () => {
             ))}
           </ul>
         </div>
-        <div className="col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-8">
-          <div className="flex flex-col items-center lg:items-start gap-3">
-            <h2 className="text-3xl text-white">Movies</h2>
-            <ul className="w-full flex flex-col items-center lg:items-start gap-2 text-xl text-gray-300">
+        <div className="col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-8">
+          <div className="flex flex-col items-center lg:items-start gap-1.5 md:gap-3">
+            <h2 className="text-2xl md:text-3xl text-white">Movies</h2>
+            <ul className="w-full flex flex-col items-center lg:items-start gap-1 md:gap-2 text-lg md:text-xl text-gray-300">
               {movieList.map((item) => (
                 <li key={item.id} className={listItemClasses}>
                   <Link to={item.path}>{item.text}</Link>
@@ -39,9 +39,9 @@ const Footer = () => {
               ))}
             </ul>
           </div>
-          <div className="flex flex-col items-center lg:items-start gap-3">
-            <h2 className="text-3xl text-white">TV Series</h2>
-            <ul className="w-full flex flex-col items-center lg:items-start gap-2 text-xl text-gray-300">
+          <div className="flex flex-col items-center lg:items-start gap-1.5 md:gap-3">
+            <h2 className="text-2xl md:text-3xl text-white">TV Series</h2>
+            <ul className="w-full flex flex-col items-center lg:items-start gap-1 md:gap-2 text-lg md:text-xl text-gray-300">
               {seriesList.map((item) => (
                 <li key={item.id} className={listItemClasses}>
                   <Link to={item.path}>{item.text}</Link>

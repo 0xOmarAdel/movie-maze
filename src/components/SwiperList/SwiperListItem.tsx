@@ -19,7 +19,7 @@ const SwiperListItem: React.FC<Props> = ({ item, category }) => {
   const bg = apiConfig.w500Image(item.poster_path || item.backdrop_path);
 
   return (
-    <div className="w-56 flex flex-col gap-3">
+    <div className="w-44 flex flex-col gap-3">
       <div
         className="relative cursor-pointer group"
         onClick={() => navigate(link)}
@@ -34,7 +34,10 @@ const SwiperListItem: React.FC<Props> = ({ item, category }) => {
         </div>
         <div className="absolute inset-0 z-30 w-full h-full bg-black bg-opacity-70 opacity-0 transition duration-300 group-hover:opacity-100"></div>
       </div>
-      <h3 className="text-white text-center" onClick={() => navigate(link)}>
+      <h3
+        className="text-white text-center"
+        onClick={() => navigate(link)}
+      >
         {item.title || item.name}
       </h3>
     </div>

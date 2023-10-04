@@ -32,7 +32,7 @@ const Header = () => {
     >
       <div className="h-full flex items-center justify-center md:justify-between">
         <Link to="/">
-          <div className="flex flex-row items-center gap-3 text-white text-4xl font-medium">
+          <div className="flex flex-row items-center gap-3 text-white text-3xl md:text-4xl font-medium">
             <FaPlay className="text-indigo-500 scale-105" />
             <p>Movie Maze</p>
           </div>
@@ -41,7 +41,7 @@ const Header = () => {
           {headerLinks.map((e, i) => (
             <li
               key={i}
-              className={`relative text-2xl font-bold ${
+              className={`relative text-base md:text-2xl font-bold ${
                 i === active ? "active" : ""
               }`}
             >

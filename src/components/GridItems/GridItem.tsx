@@ -36,13 +36,13 @@ const GridItem: React.FC<Props> = ({ item, category }) => {
       </div>
       <div className="flex flex-col gap-1">
         <p
-          className="w-fit text-xl text-white cursor-pointer"
+          className="w-fit text-base md:text-xl text-white cursor-pointer"
           onClick={() => navigate(link)}
         >
           {item.title || item.name}
         </p>
         <p
-          className="w-fit text-sm text-gray-400 cursor-pointer"
+          className="w-fit text-xs md:text-sm text-gray-400 cursor-pointer"
           onClick={() => navigate(link)}
         >
           {dateFormatter(item.release_date ?? item.first_air_date)}

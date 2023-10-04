@@ -91,10 +91,12 @@ const TVSeries = () => {
         image="/tsRy63Mu5cu8etL1X7ZLyf7UP1M.jpg"
         backdropClasses="!bg-opacity-75"
       />
-      <div className="page-container relative z-50 -mt-[26rem] py-12 flex flex-col gap-10">
-        <div className="flex flex-col gap-6">
-          <h2 className="text-4xl text-white font-medium">TV Series</h2>
-          <ul className="flex flex-row flex-wrap gap-4 text-2xl text-white">
+      <div className="page-container relative z-50 -mt-[30rem] md:-mt-[26rem] py-6 md:py-12 flex flex-col gap-6 md:gap-10">
+        <div className="flex flex-col gap-3 md:gap-6">
+          <h2 className="text-3xl md:text-4xl text-white font-medium">
+            TV Series
+          </h2>
+          <ul className="flex flex-row flex-wrap gap-y-1 gap-x-3 md:gap-4 text-xl md:text-2xl text-white">
             {seriesList.map((item) => (
               <li
                 key={item.id}
@@ -118,7 +120,7 @@ const TVSeries = () => {
           />
         </div>
         {initialLoading ? (
-          <div className="grid grid-cols-itemsGrid gap-8">
+          <div className="grid grid-cols-itemsGridMobile md:grid-cols-itemsGrid gap-8">
             <CardSkeleton repeat={10} />
           </div>
         ) : profilePosts && profilePosts?.length > 0 ? (
@@ -131,7 +133,7 @@ const TVSeries = () => {
                 <CardSkeleton repeat={10} />
               </>
             }
-            className="grid grid-cols-itemsGrid gap-8 !overflow-hidden"
+            className="grid grid-cols-itemsGridMobile md:grid-cols-itemsGrid gap-8 !overflow-hidden"
           >
             {profilePosts?.map((item) => (
               <GridItem key={item.id} item={item} category="tv" />

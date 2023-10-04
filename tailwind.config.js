@@ -14,7 +14,9 @@ export default {
       },
       gridTemplateColumns: {
         itemsGrid: "repeat(auto-fill, minmax(200px, 1fr))",
+        itemsGridMobile: "repeat(auto-fill, minmax(120px, 1fr))",
         providersGrid: "repeat(auto-fill, minmax(100px, 1fr))",
+        providersGridMobile: "repeat(auto-fill, minmax(70px, 1fr))",
       },
     },
   },

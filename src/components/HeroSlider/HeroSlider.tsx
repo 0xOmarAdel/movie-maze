@@ -5,8 +5,8 @@ import "swiper/css";
 import "swiper/css/autoplay";
 import { Swiper as SwiperClass } from "swiper";
 import HeroSliderItem from "./HeroSliderItem.js";
-import { MovieType } from "../types/Movie.types.ts";
-import useAxios from "../hooks/useAxios.tsx";
+import { MovieType } from "../../types/Movie.types.ts";
+import useAxios from "../../hooks/useAxios.tsx";
 import { toast } from "react-toastify";
 
 type AxiosResponse = {
@@ -52,7 +52,7 @@ const HeroSlider = () => {
   };
 
   return (
-    <div className="min-h-[100vh]">
+    <div className="min-h-[60vh] sm:min-h-[70vh] md:min-h-screen">
       <Swiper
         autoplay={{
           delay: 3000,

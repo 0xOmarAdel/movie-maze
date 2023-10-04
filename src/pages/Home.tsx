@@ -1,11 +1,11 @@
-import HeroSlider from "../components/HeroSlider";
+import HeroSlider from "../components/HeroSlider/HeroSlider.js";
 import SwiperList from "../components/SwiperList/SwiperList.js";
 
 const Home = () => {
   return (
     <>
       <HeroSlider />
-      <div className="page-container py-12 flex flex-col gap-5">
+      <div className="page-container py-6 md:py-12 flex flex-col gap-5">
         <SwiperList
           title="Upcoming Movies"
           link="/movies/upcoming"

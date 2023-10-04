@@ -59,10 +59,12 @@ const Providers = () => {
         image="/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg"
         backdropClasses="!bg-opacity-75"
       />
-      <div className="relative z-50 -mt-[26rem] py-12 px-6 sm:px-10 md:px-14 lg:px-16 xl:px-22 flex flex-col gap-10">
-        <div className="flex flex-col gap-6">
-          <h2 className="text-4xl text-white font-medium">Providers</h2>
-          <ul className="flex flex-row flex-wrap gap-4 text-2xl text-white">
+      <div className="relative z-50 -mt-[30rem] md:-mt-[26rem] py-6 md:py-12 px-6 sm:px-10 md:px-14 lg:px-16 xl:px-22 flex flex-col gap-6 md:gap-10">
+        <div className="flex flex-col gap-3 md:gap-6">
+          <h2 className="text-3xl md:text-4xl text-white font-medium">
+            Providers
+          </h2>
+          <ul className="flex flex-row flex-wrap gap-y-1 gap-x-3 md:gap-4 text-xl md:text-2xl text-white">
             {list.map((item) => (
               <li
                 key={item.id}
@@ -77,7 +79,7 @@ const Providers = () => {
             ))}
           </ul>
         </div>
-        <div className="grid grid-cols-providersGrid gap-8">
+        <div className="grid grid-cols-providersGridMobile md:grid-cols-providersGrid gap-8">
           {loading ? (
             <ProviderSkeleton repeat={10} />
           ) : (

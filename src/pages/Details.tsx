@@ -54,7 +54,7 @@ const Details = () => {
       {item && (
         <>
           <ItemBanner image={item.backdrop_path || item.poster_path} />
-          <div className="page-container py-12 flex flex-col gap-14">
+          <div className="page-container py-6 md:py-12 flex flex-col gap-8 md:gap-14">
             <div className="z-50 -mt-[26rem] flex flex-row justify-center gap-10">
               <ItemPoster image={item.poster_path || item.backdrop_path} />
               <div className="max-w-4xl flex flex-col gap-8">
@@ -67,9 +67,9 @@ const Details = () => {
                     <ItemTagLine tagline={item.tagline} />
                   </div>
                   <Genres genres={item.genres} />
-                  <div className="flex flex-col gap-4">
+                  <div className="flex flex-col gap-3 md:gap-4">
                     <ItemOverview overview={item.overview} />
-                    <div className="flex flex-col md:flex-row gap-3 md:gap-6">
+                    <div className="flex flex-col md:flex-row gap-1.5 md:gap-4">
                       <ItemStatus status={item.status} />
                       <ItemReleaseDate
                         date={item.release_date ?? item.first_air_date}

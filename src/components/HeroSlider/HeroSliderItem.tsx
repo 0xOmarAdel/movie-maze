@@ -1,8 +1,8 @@
-import apiConfig from "../api/apiConfig.js";
-import { useState } from "react";
+import apiConfig from "../../api/apiConfig.js";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import HeroSliderTrailerModal from "./HeroSliderTrailerModal.js";
-import { MovieType } from "../types/Movie.types.js";
+import HeroSliderTrailerModal from "../HeroSliderTrailerModal.js";
+import { MovieType } from "../../types/Movie.types.js";
 
 type Props = {
   item: MovieType;
@@ -18,6 +18,29 @@ const HeroSliderItem: React.FC<Props> = ({
   resumeSwiper,
 }) => {
   const navigate = useNavigate();
+
+  const [overview, setOverview] = useState(item.overview);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      if (width < 768) {
+        setOverview(
+          item.overview.length > 120
+            ? item.overview.slice(0, 120).trim() + ".."
+            : item.overview
+        );
+      } else {
+        setOverview(item.overview.slice(0, 300));
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [item.overview]);
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
@@ -35,23 +58,23 @@ const HeroSliderItem: React.FC<Props> = ({
     <div className="relative">
       <img
         src={apiConfig.originalImage(item.backdrop_path)}
-        className="h-screen w-full bg-cover bg-center select-none"
+        className="h-[60vh] sm:h-[70vh] md:h-screen w-full bg-cover bg-center select-none"
       />
       <div className="page-container absolute top-1/2 z-40 flex flex-row items-center gap-16 -translate-y-1/2">
-        <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-3 md:gap-5">
           <h2
-            className={`text-3xl md:text-5xl text-white font-medium opacity-0 -translate-y-full transition duration-700 ${
+            className={`text-2xl sm:text-3xl md:text-5xl text-white font-medium opacity-0 -translate-y-full transition duration-700 ${
               isActive && "!opacity-100 !translate-y-0"
             }`}
           >
             {item.title}
           </h2>
           <div
-            className={`max-w-4xl text-lg md:text-xl text-gray-100 opacity-0 -translate-y-1/2 transition duration-700 delay-300 ${
+            className={`max-w-4xl text-base sm:text-lg md:text-xl text-gray-100 opacity-0 -translate-y-1/2 transition duration-700 delay-300 ${
               isActive && "!opacity-100 !translate-y-0"
             }`}
           >
-            {item.overview}
+            {overview}
           </div>
           <div
             className={`flex flex-col sm:flex-row gap-5 sm:gap-3 opacity-0 -translate-y-1/2 transition duration-700 delay-[600ms] ${
@@ -59,13 +82,13 @@ const HeroSliderItem: React.FC<Props> = ({
             }`}
           >
             <button
-              className="w-fit px-8 py-1.5 bg-indigo-700 text-lg text-white font-medium rounded-3xl"
+              className="w-fit px-8 py-1.5 bg-indigo-700 text-base md:text-lg text-white font-medium rounded-3xl"
               onClick={() => navigate("/movie/" + item.id)}
             >
               More info
             </button>
             <button
-              className="w-fit px-8 py-1.5 border-2 border-white text-lg text-white font-medium rounded-3xl"
+              className="hidden md:block w-fit px-8 py-1.5 border-2 border-white text-lg text-white font-medium rounded-3xl"
               onClick={openTrailerModal}
             >
               Watch trailer
@@ -75,7 +98,7 @@ const HeroSliderItem: React.FC<Props> = ({
         <img
           src={apiConfig.w500Image(item.poster_path)}
           alt=""
-          className={`hidden md:block w-[15rem] lg:w-[22rem] rounded-md scale-50 transition duration-700 ${
+          className={`hidden md:block w-[15rem] lg:w-[18rem] xl:w-[20rem] rounded-md scale-50 transition duration-700 ${
             isActive && "!scale-100"
           }`}
         />

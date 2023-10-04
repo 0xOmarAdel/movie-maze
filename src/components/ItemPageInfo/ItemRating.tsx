@@ -20,8 +20,8 @@ const ItemRating: React.FC<Props> = ({ rating, small }) => {
     <div
       className={
         small
-          ? "min-w-[3rem] max-w-[3rem] min-h-[3rem] max-h-[3rem]"
-          : "min-w-[3.4rem] max-w-[3.4rem] min-h-[3.4rem] max-h-[3.4rem]"
+          ? "min-w-[2.5rem] md:min-w-[3rem] max-w-[2.5rem] md:max-w-[3rem] min-h-[2.5rem] md:min-h-[3rem] max-h-[2.5rem] md:max-h-[3rem]"
+          : "min-w-[2.8rem] md:min-w-[3.4rem] max-w-[2.8rem] md:max-w-[3.4rem] min-h-[2.8rem] md:min-h-[3.4rem] max-h-[2.8rem] md:max-h-[3.4rem]"
       }
     >
       <CircularProgressbarWithChildren
@@ -33,7 +33,9 @@ const ItemRating: React.FC<Props> = ({ rating, small }) => {
         value={rating * 10}
       >
         <p
-          className={`${small ? "text-lg" : "text-xl"} text-white font-medium`}
+          className={`${
+            small ? "text-sm md:text-lg" : "text-lg md:text-xl"
+          } text-white font-medium`}
         >
           {output}
         </p>

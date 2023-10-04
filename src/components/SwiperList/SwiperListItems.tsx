@@ -58,7 +58,7 @@ const SwiperListItems: React.FC<Props> = ({
     <div className="movie-list">
       {loading ? (
         <div className="grid grid-flow-col gap-5 overflow-hidden">
-          <CardSkeleton repeat={10} className="w-56" />
+          <CardSkeleton repeat={10} className="w-44" />
         </div>
       ) : items && items.length > 0 ? (
         <Swiper
