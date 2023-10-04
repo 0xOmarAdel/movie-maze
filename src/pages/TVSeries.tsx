@@ -134,7 +134,7 @@ const TVSeries = () => {
             className="grid grid-cols-itemsGrid gap-8 !overflow-hidden"
           >
             {profilePosts?.map((item) => (
-              <GridItem key={item.id} item={item} category="movie" />
+              <GridItem key={item.id} item={item} category="tv" />
             ))}
           </InfiniteScroll>
         ) : (
