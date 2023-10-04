@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import SwiperListItems from "./SwiperListItems.js";
 import { CategoriesTypes } from "../../types/Categories.types";
 import { movieListsTypes } from "../../types/MovieLists.types";
