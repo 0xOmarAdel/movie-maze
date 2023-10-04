@@ -14,6 +14,10 @@ const Trailer: React.FC = () => {
   const { data } = useAxios<VideosType>(category + "/" + id + "/videos");
 
   useEffect(() => {
+    setVideoSrc("");
+  }, [id, category]);
+
+  useEffect(() => {
     if (data && data.results.length > 0) {
       setVideoSrc("https://www.youtube.com/embed/" + data.results[0].key);
     }
