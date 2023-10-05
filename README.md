@@ -1,27 +1,45 @@
-# React + TypeScript + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+# Movies Maze App 
+ 
+This is a web application built using React.js, Tailwind CSS, React Router, and TypeScript. It utilizes the TMDB API to fetch movies and TV series data. The app provides various features such as searching, sorting, and viewing details of movies and TV series. It also includes a providers page that displays the top 50 providers for both movies and TV series. 
+ 
+## Features 
+ 
+- Home Page: 
+  - Slider showcasing the top 5 popular movies 
+  - Lists of top-rated movies and popular TV shows 
+- Details Page: 
+  - Displays additional information about the selected movie/TV series 
+  - Information includes name, overview, tagline, rating, runtime, release date, season number, status, cast, and a trailer 
+- Movies/TV Series Pages: 
+  - Allows users to search for specific movies/TV series 
+  - Provides sorting options such as top-rated, popular, etc. 
+- Providers Page: 
+  - Shows the top 50 providers for both movies and TV series 
+ 
+## Installation 
+ 
+1. Clone the repository:  `git clone https://github.com/0xOmarAdel/movie-maze.git`
+2. Navigate to the project directory:  `cd movie-maze`
+3. Install dependencies:  `npm install`
+ 
+## Configuration 
+ 
+To use the TMDB API, you need to obtain an API key from [TMDB website](https://www.themoviedb.org/documentation/api). Once you have the key, create a  .env  file in the project root directory and add the following line:
+`VITE_API_KEY=your_api_key_here`
+## Usage 
+ 
+Run the following command to start the development server:
+`npm start`
+Open your browser and visit `http://localhost:3000` to access the app. 
+ 
+## License 
+ 
+This project is licensed under the [MIT License](LICENSE). 
+ 
+## Tools Used 
+ 
+- [React.js](https://reactjs.org/) 
+- [React Router](https://reactrouter.com/) 
+- [TypeScript](https://www.typescriptlang.org/) 
+- [Tailwind CSS](https://tailwindcss.com/) 
+- [TMDB API](https://www.themoviedb.org/documentation/api)
