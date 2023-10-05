@@ -1,4 +1,4 @@
-# Movies Maze App 
+# Movie Maze App 
  
 This is a web application built using React.js, Tailwind CSS, React Router, and TypeScript. It utilizes the TMDB API to fetch movies and TV series data. The app provides various features such as searching, sorting, and viewing details of movies and TV series. It also includes a providers page that displays the top 50 providers for both movies and TV series. 
  
