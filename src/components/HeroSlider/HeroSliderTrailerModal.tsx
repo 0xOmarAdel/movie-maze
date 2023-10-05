@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import Modal from "../ui/Modal";
-import useAxios from "../hooks/useAxios.tsx";
-import { VideosType } from "../types/Videos.types.ts";
+import { VideosType } from "../../types/Videos.types.ts";
+import useAxios from "../../hooks/useAxios.tsx";
+import Modal from "../../ui/Modal";
 
 type Props = {
   movieId: number;

@@ -1,8 +1,8 @@
-import apiConfig from "../../api/apiConfig.js";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import HeroSliderTrailerModal from "../HeroSliderTrailerModal.js";
 import { MovieType } from "../../types/Movie.types.js";
+import apiConfig from "../../api/apiConfig.js";
+import HeroSliderTrailerModal from "./HeroSliderTrailerModal.js";
 
 type Props = {
   item: MovieType;
