@@ -32,7 +32,7 @@ Run the following command to start the development server:
 `npm run dev`
 Open your browser and visit `http://localhost:3000` to access the app.
 
-To access the deployed version of the app, visit [Movies Web App](https://movie-maze-app.netlify.app).
+To access the deployed version of the app, visit [Movie Maze App](https://movie-maze-app.netlify.app).
  
 ## License 
  
