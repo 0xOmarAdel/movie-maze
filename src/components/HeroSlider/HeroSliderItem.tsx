@@ -31,7 +31,7 @@ const HeroSliderItem: React.FC<Props> = ({
             : item.overview
         );
       } else {
-        setOverview(item.overview.slice(0, 300));
+        setOverview(item.overview);
       }
     };
 
