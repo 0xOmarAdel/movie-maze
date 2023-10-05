@@ -29,7 +29,7 @@ To use the TMDB API, you need to obtain an API key from [TMDB website](https://w
 ## Usage 
  
 Run the following command to start the development server:
-`npm start`
+`npm run dev`
 Open your browser and visit `http://localhost:3000` to access the app. 
  
 ## License 
