@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import RootLayout from "./pages/RootLayout";
+import RootLayout from "./layout/RootLayout";
 import ErrorPage from "./pages/ErrorPage";
 import Home from "./pages/Home";
 import Movies from "./pages/Movies";
