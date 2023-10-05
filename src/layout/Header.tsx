@@ -1,13 +1,9 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, NavLink, useMatch } from "react-router-dom";
 import { FaPlay } from "react-icons/fa";
-import { headerLinks } from "../data/headerLists";
 
 const Header = () => {
-  const { pathname } = useLocation();
   const [headerClasses, setHeaderClasses] = useState("");
-
-  const active = headerLinks.findIndex((e) => e.path === pathname);
 
   useEffect(() => {
     const shrinkHeader = () => {
@@ -28,7 +24,7 @@ const Header = () => {
 
   return (
     <div
-      className={`page-container py-9 fixed top-0 left-0 z-[100] w-full bg-[#0f0f0f] bg-opacity-0 text-white transition-all duration-300 ${headerClasses}`}
+      className={`page-container py-9 fixed top-0 left-0 z-[100] w-full bg-[#0f0f0f] bg-opacity-0 transition-all duration-300 ${headerClasses}`}
     >
       <div className="h-full flex items-center justify-center md:justify-between">
         <Link to="/">
@@ -38,16 +34,36 @@ const Header = () => {
           </div>
         </Link>
         <ul className="page-container !py-5 md:!p-0 fixed md:static bottom-0 left-0 w-full md:w-fit flex items-center justify-between gap-8 bg-[#0f0f0f] md:bg-transparent header__nav">
-          {headerLinks.map((e, i) => (
-            <li
-              key={i}
-              className={`relative text-base md:text-2xl font-bold ${
-                i === active ? "active" : ""
-              }`}
-            >
-              <Link to={e.path}>{e.text}</Link>
-            </li>
-          ))}
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              isActive
+                ? "relative text-base md:text-2xl font-bold text-white order-2 md:order-1"
+                : "relative text-base md:text-2xl font-bold text-gray-400 transition duration-300 hover:text-white order-2 md:order-1"
+            }
+          >
+            Home
+          </NavLink>
+          <NavLink
+            to="/movies/popular"
+            className={
+              useMatch("/movies/*")
+                ? "relative text-base md:text-2xl font-bold text-white order-1 md:order-2"
+                : "relative text-base md:text-2xl font-bold text-gray-400 transition duration-300 hover:text-white order-1 md:order-2"
+            }
+          >
+            Movies
+          </NavLink>
+          <NavLink
+            to="/tv-series/popular"
+            className={
+              useMatch("/tv-series/*")
+                ? "relative text-base md:text-2xl font-bold text-white order-3"
+                : "relative text-base md:text-2xl font-bold text-gray-400 transition duration-300 hover:text-white order-3"
+            }
+          >
+            TV Series
+          </NavLink>
         </ul>
       </div>
     </div>
