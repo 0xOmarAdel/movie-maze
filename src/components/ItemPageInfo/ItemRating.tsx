@@ -20,7 +20,7 @@ const ItemRating: React.FC<Props> = ({ rating, small }) => {
     <div
       className={
         small
-          ? "min-w-[2.5rem] md:min-w-[3rem] max-w-[2.5rem] md:max-w-[3rem] min-h-[2.5rem] md:min-h-[3rem] max-h-[2.5rem] md:max-h-[3rem]"
+          ? "min-w-[2.5rem] md:min-w-[2.6rem] max-w-[2.5rem] md:max-w-[2.6rem] min-h-[2.5rem] md:min-h-[2.6rem] max-h-[2.5rem] md:max-h-[2.6rem]"
           : "min-w-[2.8rem] md:min-w-[3.4rem] max-w-[2.8rem] md:max-w-[3.4rem] min-h-[2.8rem] md:min-h-[3.4rem] max-h-[2.8rem] md:max-h-[3.4rem]"
       }
     >
@@ -34,7 +34,7 @@ const ItemRating: React.FC<Props> = ({ rating, small }) => {
       >
         <p
           className={`${
-            small ? "text-sm md:text-lg" : "text-lg md:text-xl"
+            small ? "text-sm md:text-base" : "text-lg md:text-xl"
           } text-white font-medium`}
         >
           {output}
