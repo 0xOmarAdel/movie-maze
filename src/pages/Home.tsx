@@ -8,13 +8,13 @@ const Home = () => {
       <div className="page-container py-6 md:py-12 flex flex-col gap-5">
         <SwiperList
           title="Trending Movies"
-          link="/movies/popular"
+          link="/movies/trending"
           category="movie"
           type="trending"
         />
         <SwiperList
           title="Trending TV Series"
-          link="/tv-series/popular"
+          link="/tv-series/trending"
           category="tv"
           type="trending"
         />
