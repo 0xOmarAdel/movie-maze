@@ -7,6 +7,18 @@ const Home = () => {
       <HeroSlider />
       <div className="page-container py-6 md:py-12 flex flex-col gap-5">
         <SwiperList
+          title="Trending Movies"
+          link="/movies/popular"
+          category="movie"
+          type="trending"
+        />
+        <SwiperList
+          title="Trending TV Series"
+          link="/tv-series/popular"
+          category="tv"
+          type="trending"
+        />
+        <SwiperList
           title="Upcoming Movies"
           link="/movies/upcoming"
           category="movie"
@@ -17,18 +29,6 @@ const Home = () => {
           link="/tv-series/airing-today"
           category="tv"
           type="airing_today"
-        />
-        <SwiperList
-          title="Popular TV Series"
-          link="/tv-series/popular"
-          category="tv"
-          type="popular"
-        />
-        <SwiperList
-          title="Popular Movies"
-          link="/movies/popular"
-          category="movie"
-          type="popular"
         />
       </div>
     </>

@@ -33,7 +33,11 @@ const SwiperListItems: React.FC<Props> = ({
 }) => {
   const [items, setItems] = useState<(MovieType & TVSeriesType)[]>();
   const { data, loading, error } = useAxios<AxiosResponse>(
-    category + (type === "similar" ? "/" + id + "/similar" : "/" + type)
+    type === "similar"
+      ? category + "/" + id + "/similar"
+      : type === "trending"
+      ? "/trending/" + category + "/day"
+      : category + "/" + type
   );
 
   useEffect(() => {
