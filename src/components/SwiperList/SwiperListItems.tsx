@@ -36,7 +36,7 @@ const SwiperListItems: React.FC<Props> = ({
     type === "similar"
       ? category + "/" + id + "/similar"
       : type === "trending"
-      ? "/trending/" + category + "/day"
+      ? "trending/" + category + "/day"
       : category + "/" + type
   );
 
